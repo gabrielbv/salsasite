@@ -1,0 +1,15 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block html_head %}
+        {% endblock %}        
+    </head>
+    <body id="screen"{% block bodyattrs %}{% endblock %}>
+        {% block html_body %}
+        {% endblock %}
+    </body>
+</html>
+{% comment %}
+    base.html exists as a standard HTML wrapper.
+{% endcomment %}

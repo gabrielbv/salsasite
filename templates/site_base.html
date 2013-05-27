@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block html_head %}
+	<link rel="icon" href="/static/img/favicon.ico" />
+
+    {% block headtitle %}<title>{% block head_title %}{% endblock %} | Tabula Customer Portal</title>{% endblock %}
+
+    <link href="/static/css/style.css?v=3" rel="stylesheet" media="screen">
+    <script src="/static/js/core.js"></script>
+    {% block head %}{% endblock head %}
+{% endblock html_head %}
+
+
+{% block html_body %}
+    {% block content %}
+    {% endblock content %}
+{% endblock html_body %}
