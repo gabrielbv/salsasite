@@ -1,4 +1,7 @@
 local_settings.py
+*.swp
+*.swo
+
 *.py[cod]
 
 # C extensions
