@@ -9,6 +9,7 @@ from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
+from accounts.models import UserProfile
 
 class AccountTest(TestCase):
     def test_failed_registrations(self):
@@ -54,13 +55,17 @@ class AccountTest(TestCase):
             "confirm_email":"foo@bar.com",
             "password":"foo",
             "confirm_password":"foo",
-            "country":"foo",
+            "country": "RO",
         }
         response = self.client.post(url, data,)
         
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(User.objects.filter(username=data["username"]).count(), 1)
+        self.assertEqual(UserProfile.objects.filter(user__username=data["username"]).count(), 1)
+
+        profile = UserProfile.objects.get(user__username=data["username"])
+        self.assertTrue(profile.country)
 
         logged_in = self.client.login(username=data["username"], password=data["password"])
         self.assertTrue(logged_in)
