@@ -1,5 +1,7 @@
 # Django
 Django==1.5.1
 
+django-countries==1.5
+
 # Database
 psycopg2==2.5
