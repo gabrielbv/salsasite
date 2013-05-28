@@ -2,12 +2,16 @@ from django import forms
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 
+from django_countries.countries import COUNTRIES
+
 class UserForm(forms.ModelForm):
 	password = forms.CharField(widget=forms.PasswordInput)
 	confirm_password = forms.CharField(widget=forms.PasswordInput)
 
 	email = forms.EmailField()
 	confirm_email = forms.EmailField()
+
+	country = forms.ChoiceField(choices=COUNTRIES)
 
 	class Meta:
 		model = User
