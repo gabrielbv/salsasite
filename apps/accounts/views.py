@@ -6,9 +6,12 @@ from django.shortcuts import render
 
 def register(request):
     
-
+    form = UserForm()
     if request.method == "POST":
-            
-        return HttpResponseRedirect(reverse("register"))
-    form = UserForm()    
+    	form = UserForm(request.POST)
+        
+        if form.is_valid():
+        	form.save()
+        	return HttpResponseRedirect(reverse("register"))
+        
     return render(request, 'accounts/register.html', {'form': form})
