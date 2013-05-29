@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login as django_login
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render , render_to_response
+from django.contrib import messages
 
 from accounts.forms import UserForm
 from accounts.forms import UserLogin
@@ -50,9 +51,11 @@ def login(request):
                     
                     django_login(request, user)
                     
+                    messages.success(request, 'Login Sucessfuly.')
                     return HttpResponseRedirect(reverse("login"))
                 else:
-                    return "Disable Account"
+                    
+                    messages.error(request, 'Account Disable.')
                             
 
     return render(request, 'accounts/auth.html', {'form': form}) 
