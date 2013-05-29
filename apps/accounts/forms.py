@@ -34,8 +34,8 @@ class UserForm(forms.ModelForm):
 
 		return self.cleaned_data
 
-class UserLogin(forms.Form):   
+'''class UserLogin(forms.Form):   
     
     username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput)'''
 

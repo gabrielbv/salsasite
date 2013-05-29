@@ -6,7 +6,7 @@ from django.shortcuts import render , render_to_response
 from django.contrib import messages
 
 from accounts.forms import UserForm
-from accounts.forms import UserLogin
+#from accounts.forms import UserLogin
 from accounts.models import UserProfile
 
 def register(request):
@@ -27,7 +27,7 @@ def register(request):
         
     return render(request, 'accounts/register.html', {'form': form})
 
-
+'''
 def login(request):
 
     form = UserLogin()
@@ -59,3 +59,4 @@ def login(request):
                             
 
     return render(request, 'accounts/auth.html', {'form': form}) 
+    '''
