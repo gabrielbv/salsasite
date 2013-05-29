@@ -33,3 +33,9 @@ class UserForm(forms.ModelForm):
 		self.cleaned_data['password'] = make_password(self.cleaned_data.get('password'))
 
 		return self.cleaned_data
+
+class UserLogin(forms.Form):   
+    
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+

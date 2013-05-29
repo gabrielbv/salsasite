@@ -8,6 +8,7 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
 from accounts.models import UserProfile
 
@@ -69,3 +70,27 @@ class AccountTest(TestCase):
 
         logged_in = self.client.login(username=data["username"], password=data["password"])
         self.assertTrue(logged_in)
+
+class AccountLogin(TestCase):
+    
+    def test_login(self):
+        url = reverse("login")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+        test_user = User(username='username', password=make_password('password'),email= 'email@test.com',first_name= 'first_name',last_name= 'last_name')
+        test_user.save()
+
+        data = {
+            "username":"username",
+            "password":"password"
+        }
+        response = self.client.post(url, data,)
+        self.assertEqual(response.status_code, 302)
+
+        self.assertIn('_auth_user_id', self.client.session)
+
+        self.assertEqual(self.client.session['_auth_user_id'], test_user.pk)
+
+
+
