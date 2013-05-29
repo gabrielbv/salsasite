@@ -4,6 +4,7 @@ local_settings.py
 *.swo
 
 *.py[cod]
+.vagrant
 
 # C extensions
 *.so
