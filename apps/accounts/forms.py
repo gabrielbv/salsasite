@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 
+
 from django_countries.countries import COUNTRIES
 
 class UserForm(forms.ModelForm):
@@ -34,8 +35,7 @@ class UserForm(forms.ModelForm):
 
 		return self.cleaned_data
 
-'''class UserLogin(forms.Form):   
-    
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)'''
+
+
+
 

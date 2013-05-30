@@ -6,7 +6,6 @@ from django.shortcuts import render , render_to_response
 from django.contrib import messages
 
 from accounts.forms import UserForm
-#from accounts.forms import UserLogin
 from accounts.models import UserProfile
 
 def register(request):
@@ -27,36 +26,9 @@ def register(request):
         
     return render(request, 'accounts/register.html', {'form': form})
 
-'''
-def login(request):
+def passreset(request):
 
-    form = UserLogin()
+    if request.method =="POST":
+        return HttpResponseRedirect(reverse("passwordreset"))
 
-    if request.method == "POST":
-        
-        form = UserLogin(request.POST)
-
-        if form.is_valid():
-
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-           
-
-            user = authenticate(username=username, password=password)
-            
-
-            if user is not None:
-                
-                if user.is_active:
-                    
-                    django_login(request, user)
-                    
-                    messages.success(request, 'Login Sucessfuly.')
-                    return HttpResponseRedirect(reverse("login"))
-                else:
-                    
-                    messages.error(request, 'Account Disable.')
-                            
-
-    return render(request, 'accounts/auth.html', {'form': form}) 
-    '''
+    return render(request, 'accounts/password_reset_form.html')
