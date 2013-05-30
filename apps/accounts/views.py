@@ -26,9 +26,9 @@ def register(request):
         
     return render(request, 'accounts/register.html', {'form': form})
 
-def passreset(request):
+def user_edit(request):
 
-    if request.method =="POST":
-        return HttpResponseRedirect(reverse("passwordreset"))
+    if request.method == "POST":
+        return HttpResponseRedirect(reverse("user_edit"))
 
-    return render(request, 'accounts/password_reset_form.html')
+    return render(request, 'accounts/user_edit.html')

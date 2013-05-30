@@ -109,14 +109,24 @@ class ForgotPassword(TestCase):
         response = self.client.post(url, data)
         self.assertEqual(response.status_code,302)
 
-class EmailTest(TestCase):
-    def test_send_email(self):
-        mail.send_mail("Subject here","Here is the message.",'from@test.com',['to@test.com'],fail_silently =False)
-        self.assertEqual(len(mail.outbox),1)
-        
-        self.assertEqual(mail.outbox[0].subject,'Subject here')
-    print 1
+class UserEdit(TestCase):
     
+    def test_user_edit(self):
+        url=reverse("user_edit")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code,200)
+
+        test_user = User(username='username', password=make_password('password'),email='email@test.com',first_name='first_name',last_name='last_name')
+        test_user.save()
+
+        data ={
+            'first_name':'first_name',
+            'last_name':'last_name',
+            'country':'country'
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code,302)
+
 
 
 
