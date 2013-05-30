@@ -6,9 +6,11 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from django.core import mail
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
+
 
 from accounts.models import UserProfile
 
@@ -91,6 +93,31 @@ class AccountLogin(TestCase):
         self.assertIn('_auth_user_id', self.client.session)
 
         self.assertEqual(self.client.session['_auth_user_id'], test_user.pk)
+
+class ForgotPassword(TestCase):
+    def test_forgotpassword(self):
+        url=reverse("passwordreset")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code,200)
+
+        test_user = User(username='username', password=make_password('password'),email='email@test.com',first_name='first_name',last_name='last_name')
+        test_user.save()
+
+        data= {
+            "email":"email@test.com"
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code,302)
+
+class EmailTest(TestCase):
+    def test_send_email(self):
+        mail.send_mail("Subject here","Here is the message.",'from@test.com',['to@test.com'],fail_silently =False)
+        self.assertEqual(len(mail.outbox),1)
+        
+        self.assertEqual(mail.outbox[0].subject,'Subject here')
+    print 1
+    
+
 
 
 
