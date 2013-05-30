@@ -96,7 +96,7 @@ class AccountLogin(TestCase):
 
 class ForgotPassword(TestCase):
     def test_forgotpassword(self):
-        url=reverse("passwordreset")
+        url=reverse("password_reset")
         response = self.client.get(url)
         self.assertEqual(response.status_code,200)
 
