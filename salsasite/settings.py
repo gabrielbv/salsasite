@@ -164,6 +164,12 @@ LOGGING = {
     }
 }
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'salsasiteproject@gmail.com'
+EMAIL_HOST_PASSWORD = 'salsasitedb'
+EMAIL_PORT = 587
+
 #add local_settings.py 
 try:
     locset = os.path.join(os.path.dirname(__file__), 'local_settings.py')
@@ -171,3 +177,5 @@ try:
         execfile(locset)
 except ImportError:
     pass
+
+
