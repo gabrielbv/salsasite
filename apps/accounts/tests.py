@@ -109,15 +109,47 @@ class ForgotPassword(TestCase):
         response = self.client.post(url, data)
         self.assertEqual(response.status_code,302)
 
-class EmailTest(TestCase):
-    def test_send_email(self):
-        mail.send_mail("Subject here","Here is the message.",'from@test.com',['to@test.com'],fail_silently =False)
-        self.assertEqual(len(mail.outbox),1)
-        
-        self.assertEqual(mail.outbox[0].subject,'Subject here')
-    print 1
+class UserEdit(TestCase):
     
+    def test_user_edit(self):
+        
 
+        test_user = User(username='username', password=make_password('password'),email='email@test.com',first_name='first_name',last_name='last_name')
+        test_user.save()
+        test_profile = UserProfile(user=test_user,country='DE')
+        
+        test_profile.save()
+
+        logged_in = self.client.login(username="username", password="password")
+        self.assertTrue(logged_in)
+
+        url=reverse("user_edit")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code,200)
+
+        data ={
+            'first_name':'fname',
+            'last_name':'lname',
+            'country':'RO'
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code,302)
+
+        user_check = User.objects.get(pk=test_user.pk)
+        
+        self.assertEqual(user_check.first_name,data['first_name'])
+        self.assertEqual(user_check.last_name,data['last_name'])
+        
+        profile_check = UserProfile.objects.get(pk=test_profile.pk)
+
+        self.assertEqual(profile_check.country,data['country'])
+        
+
+      
+
+
+
+       
 
 
 

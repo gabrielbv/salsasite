@@ -1,11 +1,12 @@
 # Create your views here.
 from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render , render_to_response
 from django.contrib import messages
 
-from accounts.forms import UserForm
+from accounts.forms import UserForm,UserEdit
 from accounts.models import UserProfile
 
 def register(request):
@@ -26,9 +27,20 @@ def register(request):
         
     return render(request, 'accounts/register.html', {'form': form})
 
-def passreset(request):
+@login_required
+def user_edit(request):
+        
+    profile = UserProfile.objects.get(user=request.user)
+    form = UserEdit(instance=request.user,initial={'country':profile.country })
+    if request.method == "POST":
+        form = UserEdit(request.POST,instance=request.user)
 
-    if request.method =="POST":
-        return HttpResponseRedirect(reverse("passwordreset"))
+        if form.is_valid():
+            user = form.save()
+            profile.country=form.cleaned_data.get('country')
+            profile.save()
 
-    return render(request, 'accounts/password_reset_form.html')
+        
+            return HttpResponseRedirect(reverse("user_edit"))
+
+    return render(request, 'accounts/user_edit.html', {'form': form})

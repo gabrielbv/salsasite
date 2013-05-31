@@ -35,6 +35,15 @@ class UserForm(forms.ModelForm):
 
 		return self.cleaned_data
 
+class UserEdit(forms.ModelForm):
+	
+	first_name = forms.CharField()
+	last_name =  forms.CharField()
+	country= forms.ChoiceField(choices=COUNTRIES)
+
+	class Meta:
+		model = User
+		fields =['first_name','last_name']
 
 
 
