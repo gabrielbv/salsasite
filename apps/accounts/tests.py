@@ -149,6 +149,34 @@ class UserEdit(TestCase):
 
 
 
+
+class ProfileTest(TestCase):
+    def test_profile_page(self):
+        url = reverse("profile")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+            
+        test_user = User(username='username', password=make_password('password'),email='email@test.com',first_name='first_name',last_name='last_name')
+        test_user.save()        
+
+        test_user_profile = UserProfile.objects.create(
+                user=test_user,
+                country="DE"
+        )
+
+        logged_in = self.client.login(username=test_user.username, password="password")
+        self.assertTrue(logged_in)    
+
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue( test_user.first_name in response.content )
+        self.assertTrue( test_user.last_name in response.content )
+        
+    
+        self.assertTrue( test_user_profile.get_country_display() in response.content )
+
+
        
 
 

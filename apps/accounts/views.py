@@ -5,6 +5,8 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render , render_to_response
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 from accounts.forms import UserForm,UserEdit
 from accounts.models import UserProfile
@@ -44,3 +46,20 @@ def user_edit(request):
             return HttpResponseRedirect(reverse("user_edit"))
 
     return render(request, 'accounts/user_edit.html', {'form': form})
+
+@login_required
+def view_profile(request):
+
+    profile = UserProfile.objects.get(user_id = request.user.id)
+
+
+    return render(request, 'accounts/profile.html', {
+    
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            "profile" : profile,
+    
+    })
+
+
+   
