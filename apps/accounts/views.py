@@ -28,7 +28,9 @@ def register(request):
 
 def user_edit(request):
 
+    form = UserForm()
     if request.method == "POST":
+        form = UserForm(request.POST)
         return HttpResponseRedirect(reverse("user_edit"))
 
     return render(request, 'accounts/user_edit.html')
