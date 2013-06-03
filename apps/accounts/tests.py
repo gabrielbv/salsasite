@@ -178,6 +178,11 @@ class ProfileTest(TestCase):
 
 
        
+class MusicManage(TestCase):
+    def test_music_manage(self):
+        url = reverse ("music_manage")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
 
 
 
