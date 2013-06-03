@@ -7,18 +7,27 @@ from django.shortcuts import render , render_to_response
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from musicmanage.models import MusicManage
+from musicmanage.forms import SongsForm
 
 
-@login_required
+
+#@login_required
 def view_music_manage(request):
 
-    profile = UserProfile.objects.get(user_id = request.user.id)
+    form = SongsForm()
+    if request.method == "POST":
+    	form = SongsForm(request.POST)
+        
+        if form.is_valid():
+            MusicManage = form.save()
+            
+            profile = MusicManage.objects.create(
+                music=MusicManage,
+            )
+            
+            return HttpResponseRedirect(reverse("login"))
+        
+    return render(request, 'accounts/register.html', {'form': form})
 
 
-    return render(request, 'music/music_manage.html', {
-    
-            'first_name': request.user.first_name,
-            'last_name': request.user.last_name,
-            "profile" : profile,
-    
-    })

@@ -17,5 +17,5 @@ urlpatterns = patterns('',
 
     url(r'^accounts/', include('accounts.urls')),
 
-    url(r'^musicmanage/', include('musicmanage.urls')),
+    url(r'^music/', include('musicmanage.urls')),
 )
