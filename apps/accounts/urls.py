@@ -14,5 +14,4 @@ urlpatterns = patterns('',
     url(r'^password_reset_complete/$','django.contrib.auth.views.password_reset_complete',{'template_name':'accounts/password_reset_complete.html'}, name='password_reset_complete'),
     url(r'^user_edit/$',views.user_edit,name='user_edit'),
     url(r'^profile/$',views.view_profile, name='profile'),
-    #url(r'^music_manage/$',views.view_music_manage, name='music_manage'),
 )
