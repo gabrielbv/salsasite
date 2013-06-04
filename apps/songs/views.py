@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render , render_to_response
 from django.contrib.auth.decorators import login_required
-
+from accounts.models import UserProfile
 
 from songs.forms import SongsForm
 from songs.models import Song
@@ -30,3 +30,12 @@ def add_song(request):
 def add_song_confirm(request):
 
 	return render(request, 'songs/add_song_confirm.html')
+
+
+@login_required
+def view_songs(request):
+
+    output= Song.title
+    return HttpResponse(output)
+
+    

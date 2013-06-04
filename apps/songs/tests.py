@@ -44,6 +44,8 @@ class SongTest(TestCase):
         #self.assertEqual(User.objects.filter(username=data["username"]).count(), 1)
         self.assertEqual(Song.objects.filter(title=data["title"]).count(), 1)
 
-
+        url = reverse ("add_song_confirm")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
 
 
