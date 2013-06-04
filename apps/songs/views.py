@@ -22,6 +22,11 @@ def add_song(request):
             song = form.save()
             
             
-            return HttpResponseRedirect(reverse("add_song"))
+            return HttpResponseRedirect(reverse("add_song_confirm"))
         
     return render(request, 'songs/add_song.html', {'form': form})
+    
+@login_required
+def add_song_confirm(request):
+
+	return render(request, 'songs/add_song_confirm.html')
