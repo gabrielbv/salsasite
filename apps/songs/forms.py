@@ -6,7 +6,6 @@ from songs.models import Song
 class SongsForm(forms.ModelForm):
 	
 	
-	
 
 	class Meta:
 		model=Song
