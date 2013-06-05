@@ -1,10 +1,13 @@
 # Create your views here.
-from django.http import HttpResponse,HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.shortcuts import render , render_to_response
 from django.contrib.auth.decorators import login_required
-from accounts.models import UserProfile
+from django.shortcuts import render , render_to_response
+from django.http import HttpResponse,HttpResponseRedirect
+from django.http import Http404
+from django.template import Context, loader
 
+
+from accounts.models import UserProfile
 from songs.forms import SongsForm
 from songs.models import Song
 
@@ -31,11 +34,26 @@ def add_song_confirm(request):
 
 	return render(request, 'songs/add_song_confirm.html')
 
-
 @login_required
-def view_songs(request):
-
-    output= Song.title
-    return HttpResponse(output)
-
+def song_view(request,song_id ):
     
+    try:
+
+        song = Song.objects.get(pk=song_id)
+
+    except Song.DoesNotExist:
+
+        raise Http404
+
+
+    return render(request, 'songs/song.html',{'song':song})
+  
+	
+def index(request):
+    music_list = Song.objects.order_by('artist')
+    template = loader.get_template('songs/index.html')
+    context = Context({
+        'music_list': music_list
+    })
+    return HttpResponse(template.render(context))
+
