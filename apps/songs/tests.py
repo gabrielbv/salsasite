@@ -48,6 +48,7 @@ class SongTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+<<<<<<< HEAD
 class SongView(TestCase):
     def test_song_view(self):
         url = reverse ("song_view")
@@ -69,4 +70,12 @@ class SongView(TestCase):
 
 
 
+=======
+    def test_edit_song(self):
+        
+        url = reverse ("song_edit")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+>>>>>>> 6f3cee930569873dc41cb911ea2f424e3dbc1eac
 
+        
