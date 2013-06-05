@@ -1,0 +1,11 @@
+{% extends "site_base.html" %}
+    {% block content %}
+    <h1>Song Details</h1>
+	<p> Title: {{ song.title }} </p>	
+	<p> Artist: {{ song.artist }} </p>	
+	<p> Genre: {{ song.genre }} </p>
+	<p> BPM: {{ song.bpm }} </p>
+	<p> Status: {{ song.status }} </p>
+	<p> Price: {{ song.price }} </p>
+
+    {% endblock content %}
