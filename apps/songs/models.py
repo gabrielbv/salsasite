@@ -27,4 +27,8 @@ class Song(models.Model):
 		)
 	status = models.CharField(max_length = 32, choices = STATS, default="draft")
 	price = models.PositiveSmallIntegerField(null=True,blank=True, verbose_name="Price $")
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 6f3cee930569873dc41cb911ea2f424e3dbc1eac
