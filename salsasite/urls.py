@@ -1,17 +1,14 @@
 from django.conf.urls.defaults import *
-<<<<<<< HEAD
+
 from songs.api import SongResource
 from tastypie.api import Api
 #from songs.api.resources import SongResource
-=======
-from songs.api import SongResource, UserResource
-from tastypie.api import Api
-<<<<<<< HEAD
 
->>>>>>> 79c4ff194867cd770ea24ec6ca5cfbb1eb60baa0
-=======
+from songs.api import SongResource, UserResource
+
+
 from songs.api.resources import MyModelResource
->>>>>>> 559b7e467850fc72e7584bd5ae2ea333782a01e3
+
 
 
 # Uncomment the next two lines to enable the admin:
@@ -41,6 +38,6 @@ urlpatterns = patterns('',
     url(r'^music/', include('songs.urls')),
     url(r'^api/', include(v1_api.urls)),
 
-    (r'^api/', include(v1_api.urls))
+
 
  )
