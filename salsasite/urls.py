@@ -1,18 +1,15 @@
 from django.conf.urls.defaults import *
 from songs.api import SongResource, UserResource
 from tastypie.api import Api
-
+from songs.api.resources import MyModelResource
 
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
-song_resource = SongResource()
-
 v1_api = Api(api_name='v1')
-v1_api.register(UserResource())
-v1_api.register(SongResource())
+v1_api.register(MyModelResource())
 
 urlpatterns = patterns('',
     # Examples:
