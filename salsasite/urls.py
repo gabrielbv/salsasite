@@ -1,9 +1,7 @@
-#from django.conf.urls import patterns, include, url
-
-
-#tastypies URL imports
 from django.conf.urls.defaults import *
-from songs.api import SongResource
+from songs.api import SongResource, UserResource
+from tastypie.api import Api
+
 
 
 # Uncomment the next two lines to enable the admin:
@@ -11,6 +9,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 song_resource = SongResource()
+
+v1_api = Api(api_name='v1')
+v1_api.register(UserResource())
+v1_api.register(SongResource())
 
 urlpatterns = patterns('',
     # Examples:
@@ -27,10 +29,7 @@ urlpatterns = patterns('',
 
     #url(r'^music/', include('songs.urls')),
 
-    (r'^music/', include('songs.urls')),
-    (r'^api/', include(song_resource.urls)),
+    url(r'^music/', include('songs.urls')),
+    url(r'^api/', include(v1_api.urls)),
 
  )
-
-
-
