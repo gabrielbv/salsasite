@@ -13,6 +13,9 @@ admin.autodiscover()
 v1_api = Api(api_name='v1')
 v1_api.register(SongResource())
 
+song_resource = SongResource()
+
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'salsasite.views.home', name='home'),
@@ -28,8 +31,9 @@ urlpatterns = patterns('',
 
     #url(r'^music/', include('songs.urls')),
 
-    url(r'^music/', include('songs.urls')),
-    url(r'^api/', include(v1_api.urls)),
+    (r'^music/', include('songs.urls')),
+    (r'^api/', include(song_resource.urls)),
+    (r'^api/', include(v1_api.urls)),
 
 
 
