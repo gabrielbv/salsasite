@@ -27,12 +27,15 @@ class Song(models.Model):
 		)
 	status = models.CharField(max_length = 32, choices = STATS, default="draft")
 	price = models.PositiveSmallIntegerField(null=True,blank=True, verbose_name="Price $")
-	slub = models.SlugField()
+
+	# slug=models.SlugField()
+	# body=models.TextField()
 
 	def __unicode__(self):
 		return self.title
 
-	def save(self,*args,**kwargs):
-		if not self.slug:
-			self.slug=slugify(self.title)
-		return super(Song,self).save(*args,**kwargs)
+	# def save(self,*args,**kwargs):
+	# 	if not self.slug:
+	# 		self.slug=slugify(self.title)
+
+	# 	return super(Song,self).save(*args,**kwargs)
