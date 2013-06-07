@@ -16,8 +16,4 @@ class SongResource(ModelResource):
 
     class Meta:
         queryset = Song.objects.all()
-<<<<<<< HEAD
-        #resource_name = 'song'
-=======
         resource_name = 'song'
->>>>>>> 79c4ff194867cd770ea24ec6ca5cfbb1eb60baa0
