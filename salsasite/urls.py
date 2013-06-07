@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 #tastypies URL imports
 # from django.conf.urls.defaults import *
-#from song.api import EntryResource
+
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
