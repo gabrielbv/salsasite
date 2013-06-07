@@ -1,14 +1,16 @@
-from django.conf.urls import patterns, include, url
+#from django.conf.urls import patterns, include, url
+
 
 #tastypies URL imports
-# from django.conf.urls.defaults import *
+from django.conf.urls.defaults import *
+from songs.api import SongResource
 
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
-#entry_resource = EntryResource()
+song_resource = SongResource()
 
 urlpatterns = patterns('',
     # Examples:
@@ -23,10 +25,12 @@ urlpatterns = patterns('',
 
     url(r'^accounts/', include('accounts.urls')),
 
-    url(r'^music/', include('songs.urls')),
+    #url(r'^music/', include('songs.urls')),
 
-    #tastypie URL
+    (r'^music/', include('songs.urls')),
+    (r'^api/', include(song_resource.urls)),
 
-#     (r'^blog/', include('myapp.urls')),
-#     (r'^api/', include(entry_resource.urls)),
  )
+
+
+
