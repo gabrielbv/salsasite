@@ -39,3 +39,13 @@ class Song(models.Model):
 	# 		self.slug=slugify(self.title)
 
 	# 	return super(Song,self).save(*args,**kwargs)
+
+####################################
+
+window.Song = Backbone.Model.extend();
+ 
+window.SongCollection = Backbone.Collection.extend({
+    model:Song,
+    url:"../api/songs"
+});
+
