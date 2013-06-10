@@ -15,7 +15,6 @@ v1_api.register(SongResource())
 
 song_resource = SongResource()
 
-
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'salsasite.views.home', name='home'),
@@ -33,8 +32,8 @@ urlpatterns = patterns('',
 
     (r'^music/', include('songs.urls')),
     (r'^api/', include(song_resource.urls)),
-    (r'^api/', include(v1_api.urls)),
-
+    #(r'^api/', include(v1_api.urls)),
+    #(r'^api/', include(v2_api.urls)),
 
 
  )

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 from django.template.defaultfilters import slugify
 
+
 class Song(models.Model):
 	title = models.CharField (max_length = 100)
 	artist = models.CharField (max_length = 100)
@@ -41,11 +42,3 @@ class Song(models.Model):
 	# 	return super(Song,self).save(*args,**kwargs)
 
 ####################################
-
-window.Song = Backbone.Model.extend();
- 
-window.SongCollection = Backbone.Collection.extend({
-    model:Song,
-    url:"../api/songs"
-});
-
