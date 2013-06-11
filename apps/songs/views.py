@@ -74,6 +74,8 @@ def song_edit(request, song_id):
 
         raise Http404
 
+  
+
     form = SongsForm(instance=song)
     if request.method == "POST":
 
@@ -87,6 +89,6 @@ def song_edit(request, song_id):
 
             return HttpResponseRedirect(reverse("song_edit", args=[song_id]))
 
-    return render(request, 'songs/song_edit.html', {'form': form})
+    return render(request, 'songs/song_edit.html', {'song': song})
 
 #def song_view_backbone(request)
