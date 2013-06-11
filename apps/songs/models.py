@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 from django.template.defaultfilters import slugify
 
-
 class Song(models.Model):
 	title = models.CharField (max_length = 100)
 	artist = models.CharField (max_length = 100)
@@ -29,16 +28,22 @@ class Song(models.Model):
 	status = models.CharField(max_length = 32, choices = STATS, default="draft")
 	price = models.PositiveSmallIntegerField(null=True,blank=True, verbose_name="Price $")
 
-	# slug=models.SlugField()
-	# body=models.TextField()
-
 	def __unicode__(self):
 		return self.title
 
-	# def save(self,*args,**kwargs):
-	# 	if not self.slug:
-	# 		self.slug=slugify(self.title)
-
-	# 	return super(Song,self).save(*args,**kwargs)
-
 ####################################
+
+
+# var Song_BB = Backbone.Model.extend({
+#     schema: {
+#         title:		'Text',
+#         artist:     'Text',
+#         genre:      { type: 'Select', options: ['salsa', 'bachata', 'kizomba'] },
+#         bpm:		'Number',
+#         # music_file: '',
+#         status:      { type: 'Select', options: ['draft', 'pending', 'aproved', 'rejected'] },
+#         price:      'Number'
+#     }
+# });
+
+#var song_bb = new Song_BB();
