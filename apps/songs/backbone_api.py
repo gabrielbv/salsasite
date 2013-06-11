@@ -7,3 +7,11 @@ class SongAPIView(backbone.views.BackboneAPIView):
     display_fields = ('artist', 'title')
 
 backbone.site.register(SongAPIView)
+
+
+AddEditView = Backbone.View.extend({
+render: function(){
+ # various jquery template things, here
+Backbone.ModelBinding.call(this);
+}
+});
