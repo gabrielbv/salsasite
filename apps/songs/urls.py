@@ -13,5 +13,5 @@ urlpatterns = patterns('',
     #url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
 
     url(r'^(?P<song_id>\d+)/edit/$',views.song_edit, name='song_edit'),
-    url(r'^index/$', views.index, name='index'),
+    # url(r'^index/$', views.index, name='index'),
 )
