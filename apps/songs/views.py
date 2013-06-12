@@ -91,4 +91,6 @@ def song_edit(request, song_id):
 
     return render(request, 'songs/song_edit.html', {'song': song})
 
-#def song_view_backbone(request)
+def main_index(request):
+
+        return render(request, 'songs/main_index.html')
