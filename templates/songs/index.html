@@ -1,28 +1,19 @@
-<head>
-		<title>{{song.title}}</title>
-		<link rel="stylesheet" href="songs/css/styles.css">
-</head>
-{% if music_list %}
+{%extends 'base.html' %}
+{%block content %}
+<h1>{{ title }}</h1>
     <ul>
-    {% for song in music_list %}
-        <li><a href="/music/{{ song.id}}/">{{ song.artist }}</a></li>
-        <div class="form-right-col">
+    {% for s in songs %}
+        <li>{{ s.title }} - {{ s.artist }}</li>
+    {%endfor %}
+</ul>
 
-        <label>Title:</label>
-		<input type="text" id="title" name="title" value={{song.title}} readonly>
-
-		<label>Artist:</label>
-		<input type="text" id="artist" name="artist" value={{song.artist}} readonly>
-
-		<label>BPM:</label>
-		<input type="text" id="bpm" name="bpm" value={{song.bpm}} readonly>
-
-		<label>Price:</label>
-		<input type="text" id="price" name="price" value={{song.price}} readonly>
-
-		</div>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No music avalible.</p>
-{% endif %}
+<h2>Create Song</h2>
+<form action="{% url "songs.views.create" %}" method="post" id="createSong">
+    {% csrf_token %}
+    <div><label>Title:</label>
+    {{ form.title }}</div>
+    <div><label>Artist</label>
+    {{ form.artist }}</div>
+    <input type="submit" value="Create Artist">
+</form>
+{%endblock %}

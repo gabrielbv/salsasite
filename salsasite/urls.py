@@ -30,7 +30,7 @@ urlpatterns = patterns('',
 
     #url(r'^music/', include('songs.urls')),
 
-    (r'^music/', include('songs.urls')),
+    #(r'^music/', include('songs.urls')),
     (r'^api/', include(song_resource.urls)),
     #(r'^api/', include(v1_api.urls)),
     #(r'^api/', include(v2_api.urls)),

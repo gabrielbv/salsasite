@@ -1,17 +1,16 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 from songs import views
+from tastypie.api import Api
+from songs.api import SongResource, UserResource
+
+
+v1_api = Api(api_name='v1')
+v1_api.register(UserResource())
+v1_api.register(SongResource())
 
 urlpatterns = patterns('',
-
-
-    url(r'^add/$',views.add_song, name='add_song'),
-    url(r'^add_song_confirm/$',views.add_song_confirm, name='add_song_confirm'),
-
-    url(r'^(?P<song_id>\d+)/$',views.song_view, name='song_view'),
-    url(r'^index/$', views.index, name='index'),
-    # ex: /polls/5/
-    #url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
-
-    url(r'^(?P<song_id>\d+)/edit/$',views.song_edit, name='song_edit'),
-    url(r'^main_index/$', views.main_index, name='main_index'),
-)
+    
+    url(r'^$', 'songs.views.index', name='index'),
+    url(r'^create$', 'songs.views.create', name='create'),
+    url(r'^api/', "include(v1_api.urls)"),
+    url(r'^backbone$', 'songs.views.backbone', name='backbone'),
