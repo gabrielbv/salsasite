@@ -13,46 +13,27 @@
 <div id="content"></div>
 
 <!-- Templates -->
-<script type="text/template" id="tpl-song-list">
-<a href='#song/<%= id %>'><%= title %></a>
+<script type="text/template" id="tpl-song-list-item">
+<a href= '#<%= id %>'> <%= artist %> <%= title %></a>
+
+
 </script>
 
 <script type="text/template" id="tpl-song-details">
-
-    <div class="form-right-col", align="left">
-
-        <label>Title:</label>
-        <input type="text" id="title" name="title" align="right" width="180" value="<%= title %>" readonly>
-        <br/>
-        <label>Artist:</label>
-        <input type="text" id="artist" name="artist" value={{song.artist}} readonly>
-        <br/>
-        <label>Genre:</label>
-        <input type="text" id="genre" name="genre" value="" readonly>
-        <br/>
-        <label>BPM:</label>
-        <input type="text" id="bpm" name="bpm" value="" readonly>
-        <br/>
-        <label>Status:</label>
-        <input type="text" id="status" name="status" value="" readonly>
-        <br/>
-        <label>Price:</label>
-        <input type="text" id="price" name="price" value="" readonly>
-
-        </div>
-
-/*        <div class="form-right-col">
-        <img height="300" src="../pics/<%= picture %>"/>
-        <label>Notes:</label>
-        <textarea id="description" name="description"><%= description %></textarea>
-        </div> */
+<h3>Song details</h3>
+    <p> Title: <%= title %> </p>    
+    <p> Artist: <%= artist %> </p>  
+    <p> Genre: <%= genre %> </p>
+    <p> BPM: <%= bpm %> </p>
+    <p> Status: <%= status %> </p>
+    <p> Price: <%= price %> </p> 
 </script>
 
 <!-- JavaScript -->
-<script src="/static/js/lib/jquery-1.10.1.min.js"></script>
-<script src="/static/js/lib/underscore-min.js"></script>
-<script src="/static/js/lib/backbone-min.js"></script>
-<script src="/static/js/main.js"></script>
+<script src="/static/js/lib/jquery-2.0.0.js"></script>
+<script src="/static/js/lib/underscore.js"></script>
+<script src="/static/js/lib/backbone.js"></script>
+<script src="/static/js/lib/app.js"></script>
 
 </body>
 </html>

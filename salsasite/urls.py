@@ -1,8 +1,12 @@
 from django.conf.urls.defaults import *
 
 from tastypie.api import Api
-
+from django.utils import formats
 from songs.api.resources import SongResource
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
+#urlpatterns += staticfiles_urlpatterns()
 
 
 
@@ -27,6 +31,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^songs/', include('songs.urls')),
 
     #url(r'^music/', include('songs.urls')),
 

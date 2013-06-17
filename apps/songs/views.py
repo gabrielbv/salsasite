@@ -1,5 +1,5 @@
 
-# Create your views here.
+    # Create your views here.
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
@@ -62,7 +62,7 @@ def index(request):
     context = Context({
         'music_list': music_list
     })
-    return HttpResponse(template.render(context))
+    return render(request, 'songs/index.html', context)
 
 
 def song_edit(request, song_id):
@@ -96,12 +96,3 @@ def main_index(request):
 
         return render(request, 'songs/main_index.html')
 
-
-def backbone(request):
-    """
-Backbone view - used for testing the backbone.js view into the app
-"""
-    context = { 'songid': request.user.id,
-                'title': 'Backbone'
-              }
-    return render(request, 'songs/backbone.html', context)
