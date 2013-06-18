@@ -4,6 +4,17 @@ from tastypie.authorization import Authorization
 
 from django.contrib.auth.models import User
 from tastypie import fields
+from tastypie.authorization import Authorization
+
+from myapp.models import Entry
+
+
+class EntryResource(ModelResource):
+    user = fields.ForeignKey(UserResource, 'user')
+
+    class Meta:
+        queryset = Entry.objects.all()
+        resource_name = 'entry'
 
 class UserResource(ModelResource):
     class Meta:

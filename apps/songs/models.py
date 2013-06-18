@@ -31,19 +31,3 @@ class Song(models.Model):
 	def __unicode__(self):
 		return self.title
 
-####################################
-
-
-# var Song_BB = Backbone.Model.extend({
-#     schema: {
-#         title:		'Text',
-#         artist:     'Text',
-#         genre:      { type: 'Select', options: ['salsa', 'bachata', 'kizomba'] },
-#         bpm:		'Number',
-#         # music_file: '',
-#         status:      { type: 'Select', options: ['draft', 'pending', 'aproved', 'rejected'] },
-#         price:      'Number'
-#     }
-# });
-
-#var song_bb = new Song_BB();
