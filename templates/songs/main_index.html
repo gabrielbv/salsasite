@@ -2,10 +2,15 @@
 <head>
 <title>Song List</title>
 <link rel="stylesheet" href="/static/css/styles.css" />
+    
 </head>
 
 <body>
-
+<div id="header">
+<script type="text/template" id="tpl-new">
+    <button class = "button">New Song</button>
+</script>
+</div> 
 <div id="header"><span class="title">Song List</span></div>
 
 <div id="sidebar"></div>
@@ -13,11 +18,6 @@
 <div id="content"></div>
 
 <!-- Templates -->
-
-<script type="text/template" id="tpl-new">
-    <button class = "button">New Song</button>
-</script>
-
 
 <script type="text/template" id="tpl-song-list-item">
 <a href= '#<%= id %>'> <%= artist %> <%= title %></a>
@@ -34,6 +34,7 @@
     <p> Status: <%= status %> </p>
     <p> Price: <%= price %> </p> 
 </script>
+
 
 <!-- JavaScript -->
 <script src="/static/js/lib/jquery-2.0.0.js"></script>

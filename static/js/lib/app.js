@@ -52,7 +52,7 @@ window.SongView = Backbone.View.extend({
 
 });
 
-window.NewSong= Backbone.View.extend({
+window.HeaderView= Backbone.View.extend({
     template:_.template($('#tpl-new').html()),
     
     initialize:function(){
@@ -81,6 +81,12 @@ var AppRouter = Backbone.Router.extend({
         'new':"newSong"
 
     },
+
+    initialize:function () {
+        $('#header').html(new HeaderView().render().el);
+    },
+
+
     
     list:function(){
         
@@ -112,7 +118,9 @@ var AppRouter = Backbone.Router.extend({
     },
 
     newSong:function(){
-        this.songView = new SongView({model:new Song()});
+
+        this.song =this.songList(id)
+        this.songView = new NewSong({model:new Song()});
         $('#content').html(this.songView.render().el);
     }
 
