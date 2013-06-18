@@ -112,8 +112,8 @@ var AppRouter = Backbone.Router.extend({
     },
 
     newSong:function(){
-        app.songView = new SongView({model:new Song()});
-        $('#content').html(app.songView.render().el);
+        this.songView = new SongView({model:new Song()});
+        $('#content').html(this.songView.render().el);
     }
 
 
