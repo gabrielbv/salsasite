@@ -16,13 +16,13 @@ window.SongListView = Backbone.View.extend({
 
     initialize:function(){
         this.model.bind("reset",this.render,this);
-
+        var self = this;
     },
     render:function(eventName){
-        console.log(1)
+      
         console.log(this.model.models.length)
         _.each(this.model.models,function(song){
-            console.log(2)
+           
             $(this.el).append(new SongListItemView({model:song}).render().el);
 
         },this);
@@ -33,10 +33,10 @@ window.SongListView = Backbone.View.extend({
 window.SongListItemView = Backbone.View.extend({
     tagName: "li",
 
-    template:_.template($("#tpl-song-list-item").html()),
+    template: _.template($("#tpl-song-list-item").html()),
 
     render:function(eventName){
-        console.log(3)
+      
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
     }
@@ -52,6 +52,55 @@ window.SongView = Backbone.View.extend({
 
 });
 
+
+window.SongEditView = Backbone.View.extend({
+    template:_.template($('#tpl-song-edit').html()),
+
+
+    render:function (eventName) {
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
+    },
+
+    events:{
+        "click .save":"saveSong",
+
+    },
+
+    saveSong:function(){
+        console.log(0);
+        this.model.set({
+            title:$('#title').val(),
+            artist:$('#artist').val(),
+            genre:$('#genre').val(),
+            bpm:$('#bpm').val(),
+            price:$('#price').val()
+        })
+        console.log(1);
+
+        
+        if(this.model.isNew()){
+            console.log(2);
+            var self=this;
+            console.log(3);
+            app.songList.create(this.model,{
+                success:function(){
+                    console.log(4, self.model.id)
+                    app.navigate('', true);    
+                    console.log(5);
+                }
+            });
+
+        
+        } 
+
+
+    }
+
+});
+
+
+
 window.HeaderView= Backbone.View.extend({
     template:_.template($('#tpl-new').html()),
     
@@ -60,16 +109,21 @@ window.HeaderView= Backbone.View.extend({
     },
 
     render:function(eventName){
+        console.log(11)
         $(this.el).html(this.template());
         return this;
     },
 
     events:{
-        "click .new":"newSong"
+        
+        "click.new":"newSong"
+        
     },
 
     newSong:function(event){
+              
         app.navigate("new",true);
+        
         return false;
     }
 })
@@ -77,8 +131,9 @@ window.HeaderView= Backbone.View.extend({
 var AppRouter = Backbone.Router.extend({
     routes:{
         '': "list",
+        'new':"newSong",
         ':id': "songDetails",
-        'new':"newSong"
+        
 
     },
 
@@ -89,7 +144,7 @@ var AppRouter = Backbone.Router.extend({
 
     
     list:function(){
-        
+        console.log("list")
         this.songList = new SongCollection();
         var self=this;
 
@@ -119,9 +174,9 @@ var AppRouter = Backbone.Router.extend({
 
     newSong:function(){
 
-        this.song =this.songList(id)
-        this.songView = new NewSong({model:new Song()});
-        $('#content').html(this.songView.render().el);
+        
+        this.songEditView = new SongEditView({model:new Song()});
+        $('#content').html(this.songEditView.render().el);
     }
 
 

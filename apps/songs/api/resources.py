@@ -1,4 +1,6 @@
+from tastypie.authorization import Authorization
 from tastypie.resources import ModelResource
+
 from songs.models import Song
 
 class SongResource(ModelResource):
@@ -7,7 +9,9 @@ class SongResource(ModelResource):
         return 'application/json'
     class Meta:
         queryset = Song.objects.all()
-        allowed_methods = ['get']
+        
+        authorization=Authorization()
+        always_return_data=True
 
 
 
