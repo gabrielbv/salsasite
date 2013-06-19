@@ -32,7 +32,7 @@ urlpatterns = patterns('',
 
     url(r'^accounts/', include('accounts.urls')),
     url(r'^songs/', include('songs.urls')),
-
+    url(r'^purchases/', include ('purchases.urls')),
     #url(r'^music/', include('songs.urls')),
 
     #(r'^music/', include('songs.urls')),

@@ -63,7 +63,8 @@ window.SongView = Backbone.View.extend({
 
     events:{
         
-        "click .edit":"editSong"
+        "click .edit":"editSong",
+        "click .store": "purchaseSong"
         
     },
 
@@ -71,6 +72,13 @@ window.SongView = Backbone.View.extend({
               
         app.navigate(this.model.id+"/edit",true);
         
+        return false;
+    },
+
+    purchaseSong:function(event){
+
+        window.location="/purchases/"+this.model.id+"/";
+
         return false;
     }
 
@@ -153,7 +161,8 @@ window.HeaderView= Backbone.View.extend({
         
         return false;
     }
-})
+});
+
 
 
 var AppRouter = Backbone.Router.extend({
@@ -162,6 +171,7 @@ var AppRouter = Backbone.Router.extend({
         'new':"newSong",
         ':id': "songDetails",
         ':id/edit':"songEdit",
+        ':id/buy' : "songBuy"
         
 
     },

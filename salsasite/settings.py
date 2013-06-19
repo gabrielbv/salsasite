@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'accounts',
     'songs',
     'tastypie',
+    'purchases',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -52,7 +52,6 @@ def song_view(request,song_id ):
 
         raise Http404
 
-
     return render(request, 'songs/song.html',{'song':song})
   
 	
