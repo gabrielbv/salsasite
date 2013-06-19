@@ -1,8 +1,23 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls.defaults import *
+
+from tastypie.api import Api
+from django.utils import formats
+from songs.api.resources import SongResource
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
+#urlpatterns += staticfiles_urlpatterns()
+
+
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+
+v1_api = Api(api_name='v1')
+v1_api.register(SongResource())
+
+song_resource = SongResource()
 
 urlpatterns = patterns('',
     # Examples:
@@ -16,6 +31,14 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^songs/', include('songs.urls')),
 
-    url(r'^music/', include('songs.urls')),
-)
+    #url(r'^music/', include('songs.urls')),
+
+    #(r'^music/', include('songs.urls')),
+    (r'^api/', include(song_resource.urls)),
+    #(r'^api/', include(v1_api.urls)),
+    #(r'^api/', include(v2_api.urls)),
+
+
+ )

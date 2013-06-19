@@ -1,0 +1,65 @@
+{%extends 'base.html' %}
+
+{% block additional_head %}
+<script>
+var SONG_API = "{% url api_dispatch_list api_name="v1" resource_name="song" %}";
+</script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/app.js"></script>
+<script>
+$(document).ready(function(){
+        console.log('starting up backbone');
+        window.app = window.app || {};
+        app.songs = new Songs();
+        app.list = new ListApp({
+            el:$('#app'),
+            collection:app.songs
+        });
+        app.song.maybeFetch({
+            success: _.bind(app.list.render, app.list)
+        });
+    });
+</script>
+
+<script type="text/template" id="song-template">
+    <td><a href="#"><%= name %></a></td>
+    <td><%= email %></td>
+    <td><span class="edit btn">edit</span></td>
+    <td><span class="delete btn">delete</span></td>
+</script>
+
+<script type="text/template" id="listApp-template">
+<div>
+<form id="input" action="#" class="form-inline">
+
+<strong>Create Song</strong>- Name
+  <input type="text" id="name_input" class="input-medium">
+  <input type="hidden" id="songid_input" val="{{ songid }}">
+  Artist
+  <input type="text" id="artist_input" class="input-medium"></input>
+  <span class="createsong btn">New Song</span>
+</form>
+</div>
+<h2>Songs</h2>
+<table id="songs">
+<tr>
+    <th>Title</th><th>Song</th><th>Edit</th><th></th>
+</tr>
+</table>
+
+</script>
+
+<script type="text/template" id="EditView-template">
+<td><input type="text" id="title_edit" class="input-medium" value="<%= title %>"></td>
+<td><input type="text" id="artist_edit" class="input-medium" value="<%= artist %>"></td>
+<td><span class="save btn">save</span></td>
+<td><span class="canceledit btn">cancel</span></td>
+</script>
+{% endblock %}
+
+
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="app">
+</div>
+{%endblock %}

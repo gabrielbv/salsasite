@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
-
+from django.template.defaultfilters import slugify
 
 class Song(models.Model):
 	title = models.CharField (max_length = 100)
@@ -27,8 +27,7 @@ class Song(models.Model):
 		)
 	status = models.CharField(max_length = 32, choices = STATS, default="draft")
 	price = models.PositiveSmallIntegerField(null=True,blank=True, verbose_name="Price $")
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 6f3cee930569873dc41cb911ea2f424e3dbc1eac
+	def __unicode__(self):
+		return self.title
+

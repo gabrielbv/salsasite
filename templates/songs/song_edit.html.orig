@@ -1,12 +1,10 @@
 {% extends "site_base.html" %}
     {% block content %}
-     
-    <form enctype="multipart/form-data" action="." method="POST">
+    <form action="." method="POST">
+ 		{% csrf_token %}
+	    <!-- {{ form.as_ul }} -->
 
-    
-    	{% csrf_token %}
-	   <!--  {{ form.as_ul }} -->
-	   	<div class="form-block", align="left">
+	    <div class="form-block", align="left">
 
         <label>Title:</label>
 		<input type="text" id="title" name="title" align="right" action="." width="180" value={{song.title}}>
@@ -14,24 +12,35 @@
 		<label>Artist:</label>
 		<input type="text" id="artist" name="artist" value={{song.artist}}>
 		<br/>
+
 		<label>Genre:</label>
+		
 		<input type="text" id="genre" name="genre" value={{song.genre}}>
+		
+
+ 		<label>Genre:</label>
+		<select name ="category" class="input">
+			<option value={{song.GENRES}}> {{song.genre}}</option>
+		</select>
+
+
 		<br/>
-		<label>Song:</label>
-		<input type="file" id="music_file" name="music_file" value={{song.music_file}}>
-		<br/>
+		
+
 		<label>BPM:</label>
 		<input type="text" id="bpm" name="bpm" value={{song.bpm}}>
+
 		<br/>
 		<label>Status:</label>
-		<input type="text" id="status" name="status" value={{song.status}} readonly>
+		<input type="text" id="status" name="status" value={{song.status}}>
 		<br/>
 		<label>Price:</label>
-		<input type="text" id="price" name="price" value={{id_price}}>
+		<input type="text" id="price" name="price" value={{song.price}}>
 
 		</div>
 
 	    <input type="submit" value="Submit">
-
 	</form>
     {% endblock content %}
+
+

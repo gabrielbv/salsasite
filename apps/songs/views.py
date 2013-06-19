@@ -1,16 +1,17 @@
-# Create your views here.
+
+    # Create your views here.
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-<<<<<<< HEAD
+
 from django.shortcuts import render , render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django.http import Http404
 from django.template import Context, loader
 
-=======
+
 from accounts.models import UserProfile
 from django.contrib import messages
->>>>>>> 6f3cee930569873dc41cb911ea2f424e3dbc1eac
+
 
 from accounts.models import UserProfile
 from songs.forms import SongsForm
@@ -40,7 +41,7 @@ def add_song_confirm(request):
     return render(request, 'songs/add_song_confirm.html')
 
 @login_required
-<<<<<<< HEAD
+
 def song_view(request,song_id ):
     
     try:
@@ -61,9 +62,9 @@ def index(request):
     context = Context({
         'music_list': music_list
     })
-    return HttpResponse(template.render(context))
+    return render(request, 'songs/index.html', context)
 
-=======
+
 def song_edit(request, song_id):
 
     try:
@@ -73,6 +74,8 @@ def song_edit(request, song_id):
     except Song.DoesNotExist:
 
         raise Http404
+
+  
 
     form = SongsForm(instance=song)
     if request.method == "POST":
@@ -87,6 +90,9 @@ def song_edit(request, song_id):
 
             return HttpResponseRedirect(reverse("song_edit", args=[song_id]))
 
-    return render(request, 'songs/song_edit.html', {'form': form})
-    
->>>>>>> 6f3cee930569873dc41cb911ea2f424e3dbc1eac
+    return render(request, 'songs/song_edit.html', {'song': song})
+
+def main_index(request):
+
+        return render(request, 'songs/main_index.html')
+
