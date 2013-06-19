@@ -10,8 +10,8 @@ class SongResource(ModelResource):
     class Meta:
         queryset = Song.objects.all()
         
-        authorization=Authorization()
-        always_return_data=True
+        authorization=Authorization()  #custom seting for add and edit tastypie-backbone
+        always_return_data=True #custom seting for retrieving data in request POST
 
 
 

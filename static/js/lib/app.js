@@ -35,6 +35,10 @@ window.SongListItemView = Backbone.View.extend({
 
     template: _.template($("#tpl-song-list-item").html()),
 
+    initialize:function () {
+        this.model.bind("change", this.render, this);
+    },
+
     render:function(eventName){
       
         $(this.el).html(this.template(this.model.toJSON()));
@@ -48,13 +52,26 @@ window.SongView = Backbone.View.extend({
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
 
+    },
+
+    events:{
+        
+        "click .edit":"editSong"
+        
+    },
+
+    editSong:function(event){
+              
+        app.navigate(this.model.id+"/edit",true);
+        
+        return false;
     }
 
 });
 
 
-window.SongEditView = Backbone.View.extend({
-    template:_.template($('#tpl-song-edit').html()),
+window.SongNewView = Backbone.View.extend({
+    template:_.template($('#tpl-song-new').html()),
 
 
     render:function (eventName) {
@@ -68,26 +85,27 @@ window.SongEditView = Backbone.View.extend({
     },
 
     saveSong:function(){
-        console.log(0);
-        this.model.set({
+        
+            this.model.set({
             title:$('#title').val(),
             artist:$('#artist').val(),
             genre:$('#genre').val(),
             bpm:$('#bpm').val(),
             price:$('#price').val()
         })
-        console.log(1);
+
 
         
         if(this.model.isNew()){
-            console.log(2);
+    
+
             var self=this;
-            console.log(3);
+
             app.songList.create(this.model,{
                 success:function(){
-                    console.log(4, self.model.id)
+
                     app.navigate('', true);    
-                    console.log(5);
+
                 }
             });
 
@@ -99,6 +117,35 @@ window.SongEditView = Backbone.View.extend({
 
 });
 
+window.SongEditView = Backbone.View.extend({
+    template:_.template($('#tpl-song-edit').html()),
+
+
+    render:function (eventName) {
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
+    },
+
+    events:{
+        "click .save":"editSong"
+
+    },
+
+    editSong:function(){
+        this.model.set({
+            title:$('#title').val(),
+            artist:$('#artist').val(),
+            genre:$('#genre').val(),
+            bpm:$('#bpm').val(),
+            price:$('#price').val()
+        })
+
+        this.model.save();
+    },
+
+
+
+});
 
 
 window.HeaderView= Backbone.View.extend({
@@ -116,23 +163,25 @@ window.HeaderView= Backbone.View.extend({
 
     events:{
         
-        "click.new":"newSong"
+        "click .new":"newSong"
         
     },
 
     newSong:function(event){
-              
+
         app.navigate("new",true);
         
         return false;
     }
 })
 
+
 var AppRouter = Backbone.Router.extend({
     routes:{
         '': "list",
         'new':"newSong",
         ':id': "songDetails",
+        ':id/edit':"songEdit",
         
 
     },
@@ -175,8 +224,16 @@ var AppRouter = Backbone.Router.extend({
     newSong:function(){
 
         
-        this.songEditView = new SongEditView({model:new Song()});
+        this.songNewView = new SongNewView({model:new Song()});
+        $('#content').html(this.songNewView.render().el);
+    },
+
+    songEdit:function(id){
+
+        this.song = this.songList.get(id);
+        this.songEditView = new SongEditView({model:this.song});
         $('#content').html(this.songEditView.render().el);
+
     }
 
 

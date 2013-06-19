@@ -8,9 +8,11 @@
 <body>
 <div >
 <script type="text/template" id="tpl-new">
-    <button class = "button">New Song</button>
+    <button class = "new">New Song</button>
 </script>
 </div> 
+
+
 <div id="header"><span class="title">Song List</span></div>
 
 <div id="sidebar"></div>
@@ -33,9 +35,11 @@
     <p> BPM: <%= bpm %> </p>
     <p> Status: <%= status %> </p>
     <p> Price: <%= price %> </p> 
+    <button class = "edit">Edit Song</button>
+
 </script>
 
-<script type="text/template" id="tpl-song-edit">
+<script type="text/template" id="tpl-song-new">
     <div class="form">
         
         <input type="hidden" id="songId" name="id" disabled />
@@ -56,6 +60,30 @@
         <input type="text" id="price" name="price" value=""/>
         <button class="save">Save</button>
         <button class="delete">Delete</button>
+    </div>
+</script>
+
+
+<script type="text/template" id="tpl-song-edit">
+    <div class="form">
+        
+        <input type="hidden" id="songId" name="id" disabled />
+        <label>Title:</label>
+        <input type="text" id="title" name="title" value="<%= title%>">
+        <label>Artist:</label>
+        <input type="text" id="artist" name="artist" value="<%= artist%>">
+        <label>Genre:</label>
+        <select name="genre" id="genre">
+            <option value="" >Please select genre</option>
+            <option value="salsa" <% if (genre == "salsa") {print("selected")}%>>salsa</option>
+            <option value="bachata" <% if (genre == "bachata") {print("selected")}%>>bachata</option>
+            <option value="kizomba" <% if (genre == "kizomba") {print("selected")}%>>kizomba</option>
+        </select>
+        <label>BPM:</label>
+        <input type="text" id="bpm" name="bpm" value="<%= bpm %>" >
+        <label>Price:</label>
+        <input type="text" id="price" name="price" value="<%= price%>">
+        <button class="save">Save</button>
     </div>
 </script>
 
