@@ -1,6 +1,13 @@
 window.Song = Backbone.Model.extend({
-                 
-    });
+    defaults:{
+        "id":null,
+        "title":"",
+        "artist":"",
+        "genre":"",
+        "bpm":"",
+        "price":""
+    }     
+});
 
 window.SongCollection=Backbone.Collection.extend({
     model:Song,
@@ -70,8 +77,8 @@ window.SongView = Backbone.View.extend({
 });
 
 
-window.SongNewView = Backbone.View.extend({
-    template:_.template($('#tpl-song-new').html()),
+window.SongEditView = Backbone.View.extend({
+    template:_.template($('#tpl-song-edit').html()),
 
 
     render:function (eventName) {
@@ -80,13 +87,13 @@ window.SongNewView = Backbone.View.extend({
     },
 
     events:{
-        "click .save":"saveSong",
-
+        "click .save":"saveSong"
+        
     },
 
     saveSong:function(){
         
-            this.model.set({
+        this.model.set({
             title:$('#title').val(),
             artist:$('#artist').val(),
             genre:$('#genre').val(),
@@ -109,43 +116,16 @@ window.SongNewView = Backbone.View.extend({
                 }
             });
 
-        
-        } 
+        } else {
+            this.model.save();
+        }
 
+        return false;
+    },
 
-    }
 
 });
 
-window.SongEditView = Backbone.View.extend({
-    template:_.template($('#tpl-song-edit').html()),
-
-
-    render:function (eventName) {
-        $(this.el).html(this.template(this.model.toJSON()));
-        return this;
-    },
-
-    events:{
-        "click .save":"editSong"
-
-    },
-
-    editSong:function(){
-        this.model.set({
-            title:$('#title').val(),
-            artist:$('#artist').val(),
-            genre:$('#genre').val(),
-            bpm:$('#bpm').val(),
-            price:$('#price').val()
-        })
-
-        this.model.save();
-    },
-
-
-
-});
 
 
 window.HeaderView= Backbone.View.extend({
@@ -224,8 +204,8 @@ var AppRouter = Backbone.Router.extend({
     newSong:function(){
 
         
-        this.songNewView = new SongNewView({model:new Song()});
-        $('#content').html(this.songNewView.render().el);
+        this.songEditView = new SongEditView({model:new Song()});
+        $('#content').html(this.songEditView.render().el);
     },
 
     songEdit:function(id){
