@@ -7,9 +7,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from songs.models import Song
 from purchases.forms import PurchaseCode
+from purchases.models import Purchase
 
-from accounts.forms import UserForm,UserEdit
-from accounts.models import UserProfile
 
 
 
@@ -29,13 +28,20 @@ def purchase(request,song_id ):
 
         raise Http404
 
+    if request.method == "POST":
+
+	    purchase = Purchase.objects.create(
+	    
+	    user=request.user,
+	    song=song
+	    )
+
+	    return HttpResponseRedirect(reverse("down", args=[song.id]))
+
     return render(request, 'purchases/purchase.html',{'form':form})
 
 
-@login_required
+def download(request, song_id):
 
-def download(request):
-
-    # return HttpResponseRedirect(reverse("download"))
-
-	return render (request, "purchases/down.html")
+	return render(request, 'purchases/down.html', )
+	# return HttpResponseRedirect(reverse("down"))
