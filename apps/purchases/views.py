@@ -30,3 +30,12 @@ def purchase(request,song_id ):
         raise Http404
 
     return render(request, 'purchases/purchase.html',{'form':form})
+
+
+@login_required
+
+def download(request):
+
+    # return HttpResponseRedirect(reverse("download"))
+
+	return render (request, "purchases/down.html")
