@@ -5,3 +5,7 @@ django-countries==1.5
 
 # Database
 psycopg2==2.5
+
+#External
+South==0.8.1
+django-tastypie==0.9.15

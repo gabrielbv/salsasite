@@ -4,6 +4,8 @@ from tastypie.api import Api
 from django.utils import formats
 from songs.api.resources import SongResource
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 #urlpatterns += staticfiles_urlpatterns()
@@ -32,7 +34,7 @@ urlpatterns = patterns('',
 
     url(r'^accounts/', include('accounts.urls')),
     url(r'^songs/', include('songs.urls')),
-
+    url(r'^purchases/', include ('purchases.urls')),
     #url(r'^music/', include('songs.urls')),
 
     #(r'^music/', include('songs.urls')),
@@ -41,4 +43,4 @@ urlpatterns = patterns('',
     #(r'^api/', include(v2_api.urls)),
 
 
- )
+ ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

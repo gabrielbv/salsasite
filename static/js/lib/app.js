@@ -22,6 +22,7 @@ window.SongListView = Backbone.View.extend({
     tagName:"ul",
 
     initialize:function(){
+
         this.model.bind("reset",this.render,this);
         var self = this;
     },
@@ -35,6 +36,9 @@ window.SongListView = Backbone.View.extend({
         },this);
         return this;
     }
+
+
+
 });
 
 window.SongListItemView = Backbone.View.extend({
@@ -55,7 +59,11 @@ window.SongListItemView = Backbone.View.extend({
 
 window.SongView = Backbone.View.extend({
     template : _.template($('#tpl-song-details').html()),
+
     render:function(eventName){
+
+        console.log(1111);
+
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
 
@@ -63,15 +71,50 @@ window.SongView = Backbone.View.extend({
 
     events:{
         
-        "click .edit":"editSong"
+        "click .edit":"editSong",
+        "click .store": "purchaseSong",
+        "click .play":"songPlay"
         
     },
 
     editSong:function(event){
               
         app.navigate(this.model.id+"/edit",true);
-        
+
         return false;
+    },
+
+    purchaseSong:function(event){
+
+        window.location="/purchases/"+this.model.id+"/";
+
+        return false;
+    },
+
+    songPlay:function(){
+
+        console.log("songplay");
+
+        soundManager.stopAll();
+
+        soundManager.setup({
+        url: '/static/swf/',
+        // optional: use 100% HTML5 mode where available
+        // preferFlash: false,
+        onready: function() {
+            var mySoundObject = soundManager.createSound({
+            // optional id, for getSoundById() look-ups etc. If omitted, an id will be generated.
+            id : "id_"+this.model.get('id'),
+            url: this.model.get('music_file'),
+            });   
+
+            },
+        ontimeout: function() {
+        // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+            }
+        });
+
+        soundManager.play("id_"+this.model.get('id'));
     }
 
 });
@@ -82,6 +125,7 @@ window.SongEditView = Backbone.View.extend({
 
 
     render:function (eventName) {
+
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
     },
@@ -145,7 +189,7 @@ window.HeaderView= Backbone.View.extend({
         
         "click .new":"newSong"
         
-    },
+    }, 
 
     newSong:function(event){
 
@@ -153,7 +197,8 @@ window.HeaderView= Backbone.View.extend({
         
         return false;
     }
-})
+});
+
 
 
 var AppRouter = Backbone.Router.extend({
@@ -162,11 +207,15 @@ var AppRouter = Backbone.Router.extend({
         'new':"newSong",
         ':id': "songDetails",
         ':id/edit':"songEdit",
+        ':id/buy' : "songBuy"
         
 
     },
 
     initialize:function () {
+
+        console.log("initialize");
+
         $('#header').html(new HeaderView().render().el);
     },
 
@@ -177,10 +226,11 @@ var AppRouter = Backbone.Router.extend({
         this.songList = new SongCollection();
         var self=this;
 
-        
         this.songList.fetch({
             success:function(){
                 
+                console.log("success");
+
                 self.songListView = new SongListView({model:self.songList});
                 $("#sidebar").html(self.songListView.render().el);
 
@@ -191,11 +241,19 @@ var AppRouter = Backbone.Router.extend({
 
 
     songDetails:function(id){
+
+        console.log("songDetails");
+
         if (this.songList){
+
+            console.log("songList");
 
             this.song = this.songList.get(id);
             this.songView = new SongView({model:this.song});
+
+
             $('#content').html(this.songView.render().el);
+
 
         }
 
@@ -203,12 +261,15 @@ var AppRouter = Backbone.Router.extend({
 
     newSong:function(){
 
+        console.log("newSong");
         
         this.songEditView = new SongEditView({model:new Song()});
         $('#content').html(this.songEditView.render().el);
     },
 
     songEdit:function(id){
+
+        console.log("songEdit");
 
         this.song = this.songList.get(id);
         this.songEditView = new SongEditView({model:this.song});

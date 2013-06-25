@@ -2,6 +2,17 @@
 <head>
 <title>Song List</title>
 <link rel="stylesheet" href="/static/css/styles.css" />
+
+
+
+
+<script> 
+
+USER_ID={{ request.user.id  }}
+
+
+</script>
+
     
 </head>
 
@@ -11,6 +22,7 @@
     <button class = "new">New Song</button>
 </script>
 </div> 
+
 
 
 <div id="header"><span class="title">Song List</span></div>
@@ -27,6 +39,10 @@
 
 </script>
 
+<script src="/static/js/sm2/soundmanager2.js"></script>
+
+</script>
+
 <script type="text/template" id="tpl-song-details">
 <h3>Song details</h3>
     <p> Title: <%= title %> </p>    
@@ -36,6 +52,23 @@
     <p> Status: <%= status %> </p>
     <p> Price: <%= price %> </p> 
     <button class = "edit">Edit Song</button>
+    <button class = "store">Buy Song</button>
+    <button class = "play">Play Song</button>
+
+</script>
+
+
+<script type="text/template" id="tpl-store">
+<h3>Song details</h3>
+    <p> Title: <%= title %> </p>    
+    <p> Artist: <%= artist %> </p>  
+    <p> Genre: <%= genre %> </p>
+    <p> BPM: <%= bpm %> </p>
+    <p> Status: <%= status %> </p>
+    <p> Price: <%= price %> </p> 
+    <button class = "edit">Edit Song</button>
+    <button class = "store">Buy Song</button>
+    <button class = "play">Play Song</button>
 
 </script>
 
@@ -70,6 +103,7 @@
 <script src="/static/js/lib/underscore.js"></script>
 <script src="/static/js/lib/backbone.js"></script>
 <script src="/static/js/lib/app.js"></script>
+
 
 </body>
 </html>

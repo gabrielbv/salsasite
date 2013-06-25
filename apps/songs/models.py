@@ -16,7 +16,7 @@ class Song(models.Model):
 		)
 	genre = models.CharField (max_length =64, choices = GENRES, default= "")
 	bpm = models.PositiveSmallIntegerField(null=True,blank=True)
-	music_file = models.FileField(upload_to="songs")
+	music_file = models.FileField(upload_to="songs/")
 	
 	STATS=(
 		("draft","Draft"),
@@ -27,6 +27,9 @@ class Song(models.Model):
 		)
 	status = models.CharField(max_length = 32, choices = STATS, default="draft")
 	price = models.PositiveSmallIntegerField(null=True,blank=True, verbose_name="Price $")
+	
+	user = models.ForeignKey(User)
+
 
 	def __unicode__(self):
 		return self.title

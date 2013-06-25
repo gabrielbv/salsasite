@@ -1,0 +1,11 @@
+{% extends "site_base.html" %}
+    {% block content %}
+    <h1>Song Purchase</h1>
+
+    <form action="." method="POST">
+    	{% csrf_token %}
+	    {{ form.as_ul }}
+	    <input type="submit" value="Submit">
+	</form>
+
+    {% endblock content %}
