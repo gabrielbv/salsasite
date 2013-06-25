@@ -27,8 +27,10 @@ def add_song(request):
     	form = SongsForm(request.POST ,request.FILES)
         
         if form.is_valid():
-            
-            song = form.save()
+           
+            song = form.save(commit=False)
+            song.user = request.user
+            song = song.save()
             
             
             return HttpResponseRedirect(reverse("add_song_confirm"))

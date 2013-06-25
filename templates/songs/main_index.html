@@ -39,6 +39,10 @@ USER_ID={{ request.user.id  }}
 
 </script>
 
+<script src="/static/js/sm2/soundmanager2.js"></script>
+
+</script>
+
 <script type="text/template" id="tpl-song-details">
 <h3>Song details</h3>
     <p> Title: <%= title %> </p>    
@@ -49,6 +53,7 @@ USER_ID={{ request.user.id  }}
     <p> Price: <%= price %> </p> 
     <button class = "edit">Edit Song</button>
     <button class = "store">Buy Song</button>
+    <button class = "play">Play Song</button>
 
 </script>
 
@@ -63,6 +68,7 @@ USER_ID={{ request.user.id  }}
     <p> Price: <%= price %> </p> 
     <button class = "edit">Edit Song</button>
     <button class = "store">Buy Song</button>
+    <button class = "play">Play Song</button>
 
 </script>
 
@@ -97,6 +103,7 @@ USER_ID={{ request.user.id  }}
 <script src="/static/js/lib/underscore.js"></script>
 <script src="/static/js/lib/backbone.js"></script>
 <script src="/static/js/lib/app.js"></script>
+
 
 </body>
 </html>
