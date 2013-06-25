@@ -93,29 +93,14 @@ window.SongView = Backbone.View.extend({
 
     songPlay:function(){
 
-        console.log("songplay");
+    soundManager.createSound({
+        id: "id_"+this.model.get('id'),
+        url: this.model.get('music_file') // path to stream
+        }).play()
 
-        soundManager.stopAll();
 
-        soundManager.setup({
-        url: '/static/swf/',
-        // optional: use 100% HTML5 mode where available
-        // preferFlash: false,
-        onready: function() {
-            var mySoundObject = soundManager.createSound({
-            // optional id, for getSoundById() look-ups etc. If omitted, an id will be generated.
-            id : "id_"+this.model.get('id'),
-            url: this.model.get('music_file'),
-            });   
-
-            },
-        ontimeout: function() {
-        // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-            }
-        });
-
-        soundManager.play("id_"+this.model.get('id'));
     }
+
 
 });
 
