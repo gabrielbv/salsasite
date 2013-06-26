@@ -1,6 +1,16 @@
 {% extends "site_base.html" %}
+{% block nav_profile %}class="active"{% endblock%}
+
     {% block content %}
-    <h1>Hello, this is your profile!</h1>
+
+
+    <div class="span12">
+        <div class="page-header">
+          <h3>Hello! <br> <small>  This is your profile!</small></h3><hr class="hr2">
+        </div>
+    </div>
+
+
 	<p> {{ first_name }} </p>	
 	<p> {{ last_name }} </p>	
 	<p> {{ profile.get_country_display }} </p>

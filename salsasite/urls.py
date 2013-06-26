@@ -23,7 +23,9 @@ song_resource = SongResource()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'salsasite.views.home', name='home'),
+    url(r'^$', 'salsasite.views.home', name='home'),
+    #url(r'^news/', 'salsasite.views.news', name='news'),
+
     # url(r'^salsasite/', include('salsasite.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -35,6 +37,10 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     url(r'^songs/', include('songs.urls')),
     url(r'^purchases/', include ('purchases.urls')),
+    #url(r'^news/', include ('salsasite.urls')),
+
+  
+
     #url(r'^music/', include('songs.urls')),
 
     #(r'^music/', include('songs.urls')),

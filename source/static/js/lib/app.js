@@ -22,6 +22,7 @@ window.SongListView = Backbone.View.extend({
     tagName:"ul",
 
     initialize:function(){
+
         this.model.bind("reset",this.render,this);
         var self = this;
     },
@@ -35,6 +36,9 @@ window.SongListView = Backbone.View.extend({
         },this);
         return this;
     }
+
+
+
 });
 
 window.SongListItemView = Backbone.View.extend({
@@ -68,7 +72,9 @@ window.SongView = Backbone.View.extend({
     events:{
         
         "click .edit":"editSong",
-        "click .store": "purchaseSong"
+        "click .store": "purchaseSong",
+        "click .play":"songPlay",
+        "click .pause": "songPause"
         
     },
 
@@ -84,7 +90,25 @@ window.SongView = Backbone.View.extend({
         window.location="/purchases/"+this.model.id+"/";
 
         return false;
-    }
+    },
+
+    songPlay:function(){
+
+        var mySound = soundManager.createSound({
+            id: "id_"+this.model.get('id'),
+            url: this.model.get('music_file') // path to stream
+            }).play()
+
+    },
+
+
+    songPause:function(){
+
+        var mySound = soundManager.createSound({
+            id: "id_"+this.model.get('id'),
+            url: this.model.get('music_file') // path to stream
+            }).pause()
+    },
 
 });
 
@@ -219,8 +243,10 @@ var AppRouter = Backbone.Router.extend({
 
             this.song = this.songList.get(id);
             this.songView = new SongView({model:this.song});
-            console.log(22222);
+
+
             $('#content').html(this.songView.render().el);
+
 
         }
 

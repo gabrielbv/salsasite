@@ -25,7 +25,7 @@ def register(request):
                 country=form.cleaned_data.get('country')
             )
             
-            return HttpResponseRedirect(reverse("register"))
+            return HttpResponseRedirect(reverse("profile"))
         
     return render(request, 'accounts/register.html', {'form': form})
 

@@ -19,7 +19,9 @@ window.SongCollection=Backbone.Collection.extend({
 });
 
 window.SongListView = Backbone.View.extend({
-    tagName:"ul",
+    tagName:"div",
+
+    
 
     initialize:function(){
 
@@ -42,7 +44,7 @@ window.SongListView = Backbone.View.extend({
 });
 
 window.SongListItemView = Backbone.View.extend({
-    tagName: "li",
+    tagName: "div",
 
     template: _.template($("#tpl-song-list-item").html()),
 
@@ -50,6 +52,44 @@ window.SongListItemView = Backbone.View.extend({
         this.model.bind("change", this.render, this);
     },
 
+    events:{
+        
+        "click .edit":"editSong",
+        "click .store": "purchaseSong",
+        "click .play":"songPlay",
+        "click .pause": "songPause"
+        
+    },
+
+    editSong:function(event){
+              
+        app.navigate(this.model.id+"/edit",true);
+
+        return false;
+    },
+
+    purchaseSong:function(event){
+        window.location="/purchases/"+this.model.id+"/";
+
+        return false;
+    },
+
+    songPlay:function(){
+
+        var mySound = soundManager.createSound({
+            id: "id_"+this.model.get('id'),
+            url: this.model.get('music_file') // path to stream
+            }).play()
+    },
+
+
+    songPause:function(){
+
+        var mySound = soundManager.createSound({
+            id: "id_"+this.model.get('id'),
+            url: this.model.get('music_file') // path to stream
+            }).pause()
+    },
     render:function(eventName){
       
         $(this.el).html(this.template(this.model.toJSON()));
@@ -67,55 +107,9 @@ window.SongView = Backbone.View.extend({
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
 
-    },
-
-    events:{
-        
-        "click .edit":"editSong",
-        "click .store": "purchaseSong",
-        "click .play":"songPlay"
-        
-    },
-
-    editSong:function(event){
-              
-        app.navigate(this.model.id+"/edit",true);
-
-        return false;
-    },
-
-    purchaseSong:function(event){
-
-        window.location="/purchases/"+this.model.id+"/";
-
-        return false;
-    },
-
-    songPlay:function(){
-
-        console.log("songplay");
-
-        soundManager.stopAll();
-
-        soundManager.setup({
-        url: '/static/swf/',
-        // optional: use 100% HTML5 mode where available
-        // preferFlash: false,
-        onready: function() {
-            var mySoundObject = soundManager.createSound({
-            // optional id, for getSoundById() look-ups etc. If omitted, an id will be generated.
-            id : "id_"+this.model.get('id'),
-            url: this.model.get('music_file'),
-            });   
-
-            },
-        ontimeout: function() {
-        // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-            }
-        });
-
-        soundManager.play("id_"+this.model.get('id'));
     }
+
+
 
 });
 
@@ -232,7 +226,7 @@ var AppRouter = Backbone.Router.extend({
                 console.log("success");
 
                 self.songListView = new SongListView({model:self.songList});
-                $("#sidebar").html(self.songListView.render().el);
+                $("#content").html(self.songListView.render().el);
 
             },
         });
@@ -280,7 +274,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
+
 var app = new AppRouter();
 Backbone.history.start();
-
        
