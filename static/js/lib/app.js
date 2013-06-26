@@ -275,6 +275,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
+
 var app = new AppRouter();
 Backbone.history.start();
        
