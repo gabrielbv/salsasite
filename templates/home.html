@@ -1,0 +1,104 @@
+{% extends "site_base.html" %}
+
+{% block nav_home %}class="active"{% endblock%}
+
+{% block content %}
+<!-- Slider -->
+<section id="slider">
+    <div id="main-slider" class="carousel slide carousel-fade" data-interval="false"> <!-- Carousel -->
+        <ol class="carousel-indicators">
+            <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+            <li data-target="#main-slider" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner"> <!-- Carousel Container -->
+            <div class="item active">
+                <img alt="" src="/static/img/big3.jpg">
+                <div class="container">
+                    <div class="caption">
+                        <h1><span class="color2">New single available</span><br><span>Cum sociis natoque penatibus et magnis</span></h1>
+                    </div><!-- end caption --> 
+                </div><!-- end container -->
+            </div><!-- end item --> 
+            <div class="item">
+                <img alt="" src="/static/img/big2.jpg">
+                <div class="container">
+                    <div class="caption">
+                        <h1><span class="color1">New album available</span><br><span>Penatibus et magnis dis parturient montes</span></h1>
+                    </div><!-- end caption --> 
+                </div><!-- end container --> 
+            </div><!-- end item --> 
+        </div> <!-- end Carousel Container -->
+        <div class="carousel-navigation">
+            <a data-slide="prev" href="#main-slider" class="btn prev"></a>
+            <a data-slide="next" href="#main-slider" class="btn next"></a>  
+        </div> <!-- end Carousel navigation -->
+    </div> <!-- end Carousel -->
+    
+</section>
+<!-- end Slider -->
+<!-- Concerts -->
+<section id="concerts">
+<div class="container"><div class="row">
+    
+    <div class="span12">
+        <div class="page-header">
+          <h3>Concerts <small> Our next shows</small></h3><hr class="hr2">
+        </div>
+    </div><!-- end span12 -->
+    
+    <!-- post thumbnail --> 
+    <div class="span6">
+        <div class="box">
+			<div class="thumbnail-header color6">
+                <small><i class="icon-white icon-calendar"></i> Next show<span class="float-right">30.09.2013</span></small>
+            </div><!-- end thumbnail-header --> 
+            <div class="caption globe-bg">
+                <h4>Melbourne City Hall</h4>
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vitae diam purus.</p>
+                <p><a href="shows.html" class="link"><i class="icon icon-arrow-right"></i> Read more</a></p>
+                <dl class="dl-horizontal">
+                    <dt>When</dt>
+                    <dd>30 September 2013 | 11:30 PM</dd>
+                    <dt>Where</dt>
+                    <dd>Massive Club London, Leytonstone 13</dd>
+                    <dt>Featuring</dt>
+                    <dd>Etiam, porta, sem malesuada, magna, mollis, euismod.</dd>
+                    <dt>Tickets</dt>
+                    <dd>Free | Now available</dd>
+                </dl>
+            </div><!-- end caption --> 
+        </div><!-- end box --> 
+    </div><!-- span6 --> 
+    <!-- end post thumbnail -->
+
+    <!-- post thumbnail --> 
+    <div class="span6">
+        <div class="box">
+			<div class="thumbnail-header color6">
+                <small><i class="icon-white icon-calendar"></i> Next show<span class="float-right">30.09.2013</span></small>
+            </div><!-- end thumbnail-header --> 
+            <div class="caption globe-bg">
+                <h4>Montreal Eleven Club</h4>
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vitae diam purus.</p>
+                <p><a href="shows.html" class="link"><i class="icon icon-arrow-right"></i> Read more</a></p>
+                <dl class="dl-horizontal">
+                    <dt>When</dt>
+                    <dd>30 September 2013 | 11:30 PM</dd>
+                    <dt>Where</dt>
+                    <dd>Massive Club London, Leytonstone 13</dd>
+                    <dt>Featuring</dt>
+                    <dd>Etiam, porta, sem malesuada, magna, mollis, euismod.</dd>
+                    <dt>Tickets</dt>
+                    <dd>Free | Now available</dd>
+                </dl>
+            </div><!-- end caption --> 
+        </div><!-- end box --> 
+    </div><!-- span6 --> 
+    <!-- end post thumbnail -->
+
+</div><!-- end row --></div><!-- end container -->
+</section>
+<!-- end Concerts -->
+ 
+
+{% endblock content %}
