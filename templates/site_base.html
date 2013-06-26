@@ -44,10 +44,14 @@
 	                            <li><a href="shows.html">Shows</a></li>
 	                            <li><a href="{% url 'songs' %}" {% block nav_songs %}{% endblock%}>Songs</a></li>
 	                            <li><a href="gallery.html">Gallery</a></li>
-	                            <li><a href="{% url 'profile' %}" {% block nav_profile %}{% endblock%}>Profile</a></li>
+	                            
 	                            {% if not user.is_authenticated %}
 
-								<li><a href="{% url 'register' %}">Register</a></li>
+								<li><a href="{% url 'register' %}" {% block nav_register %}{% endblock%}>Register</a></li>
+
+								{%else%}
+
+								<li><a href="{% url 'profile' %}" {% block nav_profile %}{% endblock%}>Profile</a></li>
 
 								{%endif%}
 
@@ -55,7 +59,7 @@
 								<li><a href="{% url 'logout' %}" data-toggle="modal"><i class="icon icon-user"></i> Logout</a></li>
 								{% else%}
 
-								<li><a href="{% url 'login' %}" data-toggle="modal"><i class="icon icon-user"></i> Login</a></li>
+								<li><a href="{% url 'login' %}" {% block nav_login %}{% endblock%} data-toggle="modal"><i class="icon icon-user"></i> Login</a></li>
 
 								{% endif %}
 

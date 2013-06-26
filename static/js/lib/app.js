@@ -174,7 +174,6 @@ window.HeaderView= Backbone.View.extend({
     },
 
     render:function(eventName){
-        console.log(11)
         $(this.el).html(this.template());
         return this;
     },
