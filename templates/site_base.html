@@ -39,15 +39,27 @@
 		          		</a>
 		          		<div class="nav-collapse collapse">
 		            		<ul class="nav">
-	                            <li><a href="index.html" class="active">Home</a></li>
-	                            <li><a href="news.html">News</a></li>
+	                            <li><a href="{% url 'home' %}" {% block nav_home %}{%endblock%}>Home</a></li>
+	                            <li><a href="../news" >News</a></li>
 	                            <li><a href="shows.html">Shows</a></li>
-	                            <li><a href="/songs">Music</a></li>
-	                            <li><a href="video.html">Video</a></li>
+	                            <li><a href="{% url 'songs' %}" {% block nav_songs %}{% endblock%}>Songs</a></li>
 	                            <li><a href="gallery.html">Gallery</a></li>
-	                            <li><a href="about.html">About</a></li>
-								<li><a href="/accounts/login" data-toggle="modal"><i class="icon icon-user"></i> Login</a></li>
-		            		</ul>
+	                            <li><a href="{% url 'profile' %}" {% block nav_profile %}{% endblock%}>Profile</a></li>
+	                            {% if not user.is_authenticated %}
+
+								<li><a href="{% url 'register' %}">Register</a></li>
+
+								{%endif%}
+
+	                            {% if user.is_authenticated %}
+								<li><a href="{% url 'logout' %}" data-toggle="modal"><i class="icon icon-user"></i> Logout</a></li>
+								{% else%}
+
+								<li><a href="{% url 'login' %}" data-toggle="modal"><i class="icon icon-user"></i> Login</a></li>
+
+								{% endif %}
+
+							</ul>
 		          		</div>
 		        	</div> <!--end Navbar Inner -->
 		      	</div> <!--end Navbar -->

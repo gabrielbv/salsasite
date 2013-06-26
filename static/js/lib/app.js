@@ -44,7 +44,7 @@ window.SongListView = Backbone.View.extend({
 });
 
 window.SongListItemView = Backbone.View.extend({
-    tagName: "li",
+    tagName: "div",
 
     template: _.template($("#tpl-song-list-item").html()),
 
@@ -80,7 +80,6 @@ window.SongListItemView = Backbone.View.extend({
             id: "id_"+this.model.get('id'),
             url: this.model.get('music_file') // path to stream
             }).play()
-
     },
 
 
