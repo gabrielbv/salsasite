@@ -24,7 +24,8 @@ song_resource = SongResource()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'salsasite.views.home', name='home'),
-    #url(r'^news/', 'salsasite.views.news', name='news'),
+    url(r'^news/$', 'salsasite.views.news', name='news'),
+    url(r'^gallery/$', 'salsasite.views.gallery', name='gallery'),
 
     # url(r'^salsasite/', include('salsasite.foo.urls')),
 

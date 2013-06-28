@@ -40,14 +40,18 @@
         <div class="span8">
             <div class="box">
                 <div class="thumbnail-header color3">
-                    <small><i class="icon-white icon-music"></i> Music<span class="float-right">30.09.2013</span></small>
+                    <small><i class="icon-white icon-music"></i> Music<span class="float-right"></span></small>
                 </div><!-- end thumbnail-header --> 
                 <div class="caption music-bg">
                     <h4><%= title%></h4>
                     <hr class="hr2">
                     <dl class="dl">
-                        <dt><%= artist%>  </dt>
-                        <dd><%= genre%></dd>
+                        <p> Artist: <%= artist %> </p>  
+                        <p> Genre: <%= genre %> </p>
+                        <p> BPM: <%= bpm %> </p>
+                        <p> Status: <%= status %> </p>
+                        <p> Price &#36: <%= price %> </p> 
+                       
                     </dl>         
                 </div><!-- end caption --> 
             </div><!-- end box --> 
