@@ -15,5 +15,7 @@ def gallery(request):
 	
 	return render(request, 'gallery.html')
         
-   
+def Pdetails(request):
+	
+	return render(request, 'Pdetails.html')
     
