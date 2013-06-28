@@ -209,7 +209,7 @@ var AppRouter = Backbone.Router.extend({
 
         console.log("initialize");
 
-        $('#header').html(new HeaderView().render().el);
+        $('#container').html(new HeaderView().render().el);
     },
 
 

@@ -14,17 +14,18 @@
 		<label>Artist:</label>
 		<input type="text" id="artist" name="artist" value={{song.artist}}>
 		<br/>
-		<label>Genre:</label>
-		<input type="text" id="genre" name="genre" value={{song.genre}}>
+            <select name="genre" id="genre">
+                <option value="" >Please select genre</option>
+                <option value="salsa" <% if (genre == "salsa") {print("selected")}%>>salsa</option>
+                <option value="bachata" <% if (genre == "bachata") {print("selected")}%>>bachata</option>
+                <option value="kizomba" <% if (genre == "kizomba") {print("selected")}%>>kizomba</option>
+            </select>
 		<br/>
 		<label>Song:</label>
 		<input type="file" id="music_file" name="music_file" value={{song.music_file}}>
 		<br/>
 		<label>BPM:</label>
 		<input type="text" id="bpm" name="bpm" value={{song.bpm}}>
-		<br/>
-		<label>Status:</label>
-		<input type="text" id="status" name="status" value={{song.status}} readonly>
 		<br/>
 		<label>Price:</label>
 		<input type="text" id="price" name="price" value={{id_price}}>
