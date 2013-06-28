@@ -1,0 +1,127 @@
+{% extends "site_base.html" %}
+
+{% block nav_gallery %}class="active"{% endblock%}
+{% block content %}
+<!-- Gallery -->
+<section>
+<div class="container"><div class="row">
+    
+    <div class="span12">
+        <div class="page-header">
+          <h3>Gallery <small> Our photos</small></h3><hr class="hr2">
+        </div>
+    </div><!-- end span12 --> 
+
+    
+</div><!-- end row --></div><!-- end container -->    
+    
+<section> <!-- Isotope -->
+<div class="container"><div class="row">
+    <section id="container"> <!-- Isotope Container -->
+        
+        <!-- post thumbnail --> 
+        <div class="span4 item one">
+            <div class="box">
+                <a href="#modal-1" role="button" data-toggle="modal">
+                    <div class="view"><img alt="" src="/static/img/union1.jpg"></div><!-- image zoom --> 
+                </a>
+                <div class="thumbnail-header color3">
+                    <small><i class="icon-white icon-eye-open"></i> Union Pub Party</small>
+                </div><!-- end thumbnail-header -->
+            </div><!-- end box --> 
+        </div><!-- span4 --> 
+        <!-- end post thumbnail -->
+        
+        <!-- post thumbnail --> 
+        <div class="span4 item two">
+            <div class="box">
+                <a href="#modal-2" role="button" data-toggle="modal">
+                    <div class="view"><img alt="" src="/static/img/union2.jpg"></div><!-- image zoom --> 
+                </a>
+                <div class="thumbnail-header color2">
+                    <small><i class="icon-white icon-eye-open"></i> Union Pub Party</small>
+                </div><!-- end thumbnail-header -->
+            </div><!-- end box --> 
+        </div><!-- span4 --> 
+        <!-- end post thumbnail -->
+        
+        <!-- post thumbnail --> 
+        <div class="span4 item three">
+            <div class="box">
+                <a href="#modal-3" role="button" data-toggle="modal">
+                    <div class="view"><img alt="" src="/static/img/union3.jpg"></div><!-- image zoom --> 
+                </a>
+                <div class="thumbnail-header color5">
+                    <small><i class="icon-white icon-eye-open"></i> Union Pub Party</small>
+                </div><!-- end thumbnail-header -->
+            </div><!-- end box --> 
+        </div><!-- span4 --> 
+        <!-- end post thumbnail -->
+        
+        <!-- post thumbnail --> 
+        <div class="span4 item two">
+            <div class="box">
+                <a href="#modal-2" role="button" data-toggle="modal">
+                    <div class="view"><img alt="" src="/static/img/times1.jpg"></div><!-- image zoom --> 
+                </a>
+                <div class="thumbnail-header color2">
+                    <small><i class="icon-white icon-eye-open"></i> Times Pub Party</small>
+                </div><!-- end thumbnail-header -->
+            </div><!-- end box --> 
+        </div><!-- span4 --> 
+        <!-- end post thumbnail -->
+        
+        <!-- post thumbnail --> 
+        <div class="span4 item three">
+            <div class="box">
+                <a href="#modal-3" role="button" data-toggle="modal">
+                    <div class="view"><img alt="" src="/static/img/times2.jpg"></div><!-- image zoom --> 
+                </a>
+                <div class="thumbnail-header color5">
+                    <small><i class="icon-white icon-eye-open"></i> Times Pub Party</small>
+                </div><!-- end thumbnail-header -->
+            </div><!-- end box --> 
+        </div><!-- span4 --> 
+        <!-- end post thumbnail -->
+        
+        <!-- post thumbnail --> 
+        <div class="span4 item one">
+            <div class="box">
+                <a href="#modal-1" role="button" data-toggle="modal">
+                    <div class="view"><img alt="" src="/static/img/times3.jpg"></div><!-- image zoom --> 
+                </a>
+                <div class="thumbnail-header color3">
+                    <small><i class="icon-white icon-eye-open"></i> Times Pub Party</small>
+                </div><!-- end thumbnail-header -->
+            </div><!-- end box --> 
+        </div><!-- span4 --> 
+        <!-- end post thumbnail -->
+    
+    </section> <!-- end Isotope Container -->
+</div><!-- end row --></div><!-- end container -->   
+</section> <!-- end Isotope -->
+    
+    <!-- popup gallery must be outside isotope container -->
+    <!-- popup content --> 
+    <div id="modal-1" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <a class="btn close" data-dismiss="modal" aria-hidden="true"><i class="icon-white icon-remove"></i> Close</a>
+        <img alt="" src="./img/one.jpg">
+    </div><!-- end modal --> 
+    <!-- popup content -->
+    <!-- popup content --> 
+    <div id="modal-2" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <a class="btn close" data-dismiss="modal" aria-hidden="true"><i class="icon-white icon-remove"></i> Close</a>
+        <img alt="" src="./img/two.jpg">
+    </div><!-- end modal --> 
+    <!-- popup content -->
+    <!-- popup content --> 
+    <div id="modal-3" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <a class="btn close" data-dismiss="modal" aria-hidden="true"><i class="icon-white icon-remove"></i> Close</a>
+        <img alt="" src="./img/three.jpg">
+    </div><!-- end modal --> 
+    <!-- popup content -->
+    
+
+</section>
+<!-- end Gallery -->
+{% endblock content %}

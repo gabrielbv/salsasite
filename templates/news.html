@@ -1,0 +1,55 @@
+{% extends "site_base.html" %}
+
+{% block nav_news %}class="active"{% endblock%}
+{% block content %}
+
+<!-- Shows -->
+<section>
+<div class="container"><div class="row">
+    
+    <div class="span12">
+        <div class="page-header">
+          <h3>Shows <small> Our next shows</small></h3><hr class="hr2">
+        </div>
+    </div><!-- end span12 --> 
+        
+    <!-- post thumbnail --> 
+    <div class="span12">
+        <div class="box">
+            <div class="thumbnail-header color6">
+                <small><i class="icon-white icon-calendar"></i> Next show<span class="float-right">05.07.2013</span></small>
+            </div><!-- end thumbnail-header --> 
+            <div class="caption globe-bg">
+                <a class="accordion-toggle" data-toggle="collapse" href="#show1">
+                <h4>Step in 2 Salsa Wekend</h4>
+                <p>Oliver Pineda is a role model among salseros all over the world, being the founder of the most successful Latin Dance Academy in Australia - “Latin Motion Dance Academy”...</p>
+                <div class="caption">
+                    <a href="{% url 'Pdetails' %}" class="link"><i class="icon icon-arrow-right"></i> Read more</a>
+                </div>
+
+                <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-up"></i>
+                </a>
+                <div id="show1" class="collapse in">
+                <hr class="hr2">
+                <dl class="dl-horizontal">
+                    <dt>When</dt>
+                    <dd>05 July 2013 | 08:30 PM</dd>
+                    <dt>Where</dt>
+                    <dd>Ballroom - Elianna Mall</dd>
+                    <dt>Featuring</dt>
+                    <dd>Oliver Pineda</dd>
+                    <dt>Tickets</dt>
+                    <dd>70$ | Now available</dd>
+                </dl>
+               
+                <hr class="hr2">
+                <iframe class="google-map" src="https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=eliana+mall,+brasov&aq=&sll=37.0625,-95.677068&sspn=56.200193,114.169922&t=h&ie=UTF8&hq=eliana+mall,&hnear=Bra%C8%99ov,+Brasov,+Romania&ll=45.656828,25.562096&spn=0.003067,0.006968&z=14&iwloc=A&cid=18045713177433512746"></iframe>
+            </div><!-- end caption --> 
+            </div><!-- end collapse -->
+        </div><!-- end box --> 
+    </div><!-- span12 --> 
+    <!-- end post thumbnail -->
+    
+ 
+
+{% endblock content %}

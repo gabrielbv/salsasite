@@ -174,7 +174,6 @@ window.HeaderView= Backbone.View.extend({
     },
 
     render:function(eventName){
-        console.log(11)
         $(this.el).html(this.template());
         return this;
     },
@@ -210,7 +209,7 @@ var AppRouter = Backbone.Router.extend({
 
         console.log("initialize");
 
-        $('#header').html(new HeaderView().render().el);
+        $('#container').html(new HeaderView().render().el);
     },
 
 

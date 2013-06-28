@@ -43,7 +43,7 @@ def user_edit(request):
             profile.save()
 
         
-            return HttpResponseRedirect(reverse("user_edit"))
+            return HttpResponseRedirect(reverse("profile"))
 
     return render(request, 'accounts/user_edit.html', {'form': form})
 

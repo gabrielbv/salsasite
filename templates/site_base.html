@@ -33,21 +33,24 @@
 	        <section class="menu"> 
 				<div class="navbar"> <!-- Navbar -->
 		    		<div class="navbar-inner">
-						<a class="brand" href="index.html"><img alt="" src="img/logo.png"> <b>Audiofolio Vol2</b> Music Site Template</a> <!-- Logo -->
+						<a class="brand" href="{% url 'home' %}" ><img alt="" src="/static/img/logo.jpg" hight="100" width="100"> <b>SalsaSite</b> </a> <!-- Logo -->
 	                    <a class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <!-- Navigation for small display -->
 	                        <i class="icon icon-white icon-chevron-down"></i> Menu
 		          		</a>
 		          		<div class="nav-collapse collapse">
 		            		<ul class="nav">
 	                            <li><a href="{% url 'home' %}" {% block nav_home %}{%endblock%}>Home</a></li>
-	                            <li><a href="../news" >News</a></li>
-	                            <li><a href="shows.html">Shows</a></li>
+	                            <li><a href="{% url 'news' %}" {% block nav_news %}{%endblock%}>News</a></li>
 	                            <li><a href="{% url 'songs' %}" {% block nav_songs %}{% endblock%}>Songs</a></li>
-	                            <li><a href="gallery.html">Gallery</a></li>
-	                            <li><a href="{% url 'profile' %}" {% block nav_profile %}{% endblock%}>Profile</a></li>
+	                            <li><a href="{% url 'gallery' %}" {% block nav_gallery%}{% endblock%}>Gallery</a></li>
+	                            
 	                            {% if not user.is_authenticated %}
 
-								<li><a href="{% url 'register' %}">Register</a></li>
+								<li><a href="{% url 'register' %}" {% block nav_register %}{% endblock%}>Register</a></li>
+
+								{%else%}
+
+								<li><a href="{% url 'profile' %}" {% block nav_profile %}{% endblock%}>Profile</a></li>
 
 								{%endif%}
 
@@ -55,7 +58,7 @@
 								<li><a href="{% url 'logout' %}" data-toggle="modal"><i class="icon icon-user"></i> Logout</a></li>
 								{% else%}
 
-								<li><a href="{% url 'login' %}" data-toggle="modal"><i class="icon icon-user"></i> Login</a></li>
+								<li><a href="{% url 'login' %}" {% block nav_login %}{% endblock%} data-toggle="modal"><i class="icon icon-user"></i> Login</a></li>
 
 								{% endif %}
 
@@ -84,7 +87,7 @@
             <div class="span4">
                 <h4>About</h4>
                 <hr class="hr2">
-                <p>Aliquam tempor, quam ac malesuada viverra, velit nunc auctor augue, id volutpat erat sem a ipsum. Aenean tincidunt arcu scelerisque libero malesuada facilisis eu vitae mi. Praesent euismod dolor congue leo interdum pellentesque.</p>
+                <p>SalsaSite is a website dedicated to the world of social dance-music , ragin rom salsa and cha-cha to bachata and zouk. SalsaSite is founded with the intention of giving the genre of tropical Latin music respect and attention it truly deserves.</p>
             </div><!-- end span4 --> 
             <div class="span4">
                 <h4>TweetFeed</h4>
@@ -92,9 +95,13 @@
                 <div class="tweet"></div> <!-- TweetFeed -->
             </div><!-- end span4 --> 
             <div id="flickr" class="span4">
-                <h4>Flickr</h4>
+                <h4>Contacts</h4>
                 <hr class="hr2">
-                    <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=5&amp;display=latest&amp;size=s&amp;layout=y&amp;source=user&amp;user=52617155@N08"></script>
+                        <p> Gabriel Dianu :  0740 709 666</p>  
+                        <p> Alexandra Ichim:  0720 530 617  </p>
+                        <p> Edward Kiss :  0761 617 665 </p>
+                        <p> </p>
+                        <p>  </p>
             </div><!-- end span4 --> 
         </div><!-- end row -->
     </div><!-- end container --> 
@@ -106,19 +113,14 @@
     <div class="container">
         <div class="row">
             <div class="span6">
-                <p>Audiofolio Vol2 / brkor 2013<br><small>Music Site Template</small></p>
+                <p>SalsaSite<br><small>You can also contact us here</small></p>
             </div><!-- end span6 --> 
             <div class="span6">
                 <div class="right">
-                    <a href="#" class="share"></a>
-                    <a href="#" class="behance"></a>
-                    <a href="#" class="gplus"></a>
-                    <a href="#" class="skype"></a>
-                    <a href="#" class="tumblr"></a>
-                    <a href="#" class="pinterest"></a>
-                    <a href="#" class="twitter"></a>
-                    <a href="#" class="facebook"></a>
-                    <a href="#" class="youtube"></a>
+                    <a href="http://www.mixcloud.com/gabybv/gabriel-dianus-bachata-kizomba-mix/" class="share"></a>
+                    <a href="https://plus.google.com/101942892030809704776/posts" class="gplus"></a>
+                    <a href="https://www.facebook.com/Stepin2SLS " class="facebook"></a>
+                    <a href="https://www.youtube.com/user/StepintoSalsa " class="youtube"></a>
                     <a href="#" class="vimeo"></a>
                 </div><!-- end right --> 
             </div><!-- end span6 --> 
