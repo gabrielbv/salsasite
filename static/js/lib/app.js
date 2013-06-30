@@ -19,9 +19,38 @@ window.SongCollection=Backbone.Collection.extend({
 });
 
 window.SongListView = Backbone.View.extend({
+    template:_.template($('#tpl-song-filter').html()),
     tagName:"div",
 
     
+    events:{
+        
+        "click .bachata":"selectbachata",
+        "click .kizomba": "selectkizomba",
+        "click .salsa":"selectsalsa",
+              
+    },
+
+    selectbachata:function(event){
+        console.log("bachata")
+        app.navigate("/songs/?genre=bachata",true);
+
+        return false;
+    },
+
+    selectkizomba:function(event){
+              
+        app.navigate(this.model.id+"/songs/?genre=kizomba",true);
+
+        return false;
+    },
+
+    selectsalsa:function(event){
+              
+        app.navigate(this.model.id+"/songs/?genre=salsa",true);
+
+        return false;
+    },
 
     initialize:function(){
 
@@ -57,7 +86,8 @@ window.SongListItemView = Backbone.View.extend({
         "click .edit":"editSong",
         "click .store": "purchaseSong",
         "click .play":"songPlay",
-        "click .pause": "songPause"
+        "click .pause": "songPause",
+
         
     },
 
@@ -193,6 +223,9 @@ window.HeaderView= Backbone.View.extend({
 });
 
 window.SongFilter = Backbone.View.extend({
+    model:Song,
+    url:"/api/song/",
+
     tagName: "div",
 
     template: _.template($("#tpl-song-list-item").html()),
@@ -211,7 +244,7 @@ window.SongFilter = Backbone.View.extend({
 
     selectbachata:function(event){
         console.log("bachata")
-        app.navigate(this.model.id+"/songs/?genre=bachata",true);
+        app.navigate("/songs/?genre=bachata",true);
 
         return false;
     },
