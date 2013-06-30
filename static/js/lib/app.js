@@ -222,53 +222,6 @@ window.HeaderView= Backbone.View.extend({
     }
 });
 
-window.SongFilter = Backbone.View.extend({
-    model:Song,
-    url:"/api/song/",
-
-    tagName: "div",
-
-    template: _.template($("#tpl-song-list-item").html()),
-
-    initialize:function () {
-        this.model.bind("change", this.render, this);
-    },
-
-    events:{
-        
-        "click .bachata":"selectbachata",
-        "click .kizomba": "selectkizomba",
-        "click .salsa":"selectsalsa",
-              
-    },
-
-    selectbachata:function(event){
-        console.log("bachata")
-        app.navigate("/songs/?genre=bachata",true);
-
-        return false;
-    },
-
-    selectkizomba:function(event){
-              
-        app.navigate(this.model.id+"/songs/?genre=kizomba",true);
-
-        return false;
-    },
-
-    selectsalsa:function(event){
-              
-        app.navigate(this.model.id+"/songs/?genre=salsa",true);
-
-        return false;
-    },
-
-    render:function(eventName){
-      
-        $(this.el).html(this.template(this.model.toJSON()));
-        return this;
-    }
-});
 
 
 var AppRouter = Backbone.Router.extend({
