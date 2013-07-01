@@ -167,14 +167,16 @@ window.SongEditView = Backbone.View.extend({
 
 
 window.HeaderView= Backbone.View.extend({
-    template:_.template($('#new').html()),
+    template:_.template($('#tpl-new').html()),
     
     initialize:function(){
         this.render();
     },
 
     render:function(eventName){
+        console.log("render")
         $(this.el).html(this.template());
+        console.log($(this.el).html())
         return this;
     },
 
@@ -207,9 +209,12 @@ var AppRouter = Backbone.Router.extend({
 
     initialize:function () {
 
-        console.log("initialize");
+        console.log("initialize", $('#header'));
 
-        $('#span12').html(new HeaderView().render().el);
+        $('#header').html(new HeaderView().render().el);
+
+        console.log($('#header').html())
+
     },
 
 
@@ -257,7 +262,7 @@ var AppRouter = Backbone.Router.extend({
         console.log("newSong");
         
         this.songEditView = new SongEditView({model:new Song()});
-        $('#content').html(this.songEditView.render().el);
+        $('#header').html(this.songEditView.render().el);
     },
 
     songEdit:function(id){

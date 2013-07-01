@@ -24,11 +24,14 @@
 
 {% block content %}
 <!-- Templates -->
+
+
+
     <script type="text/template" id="tpl-new">
-        <div class="container">
-            <button class="new">New</button>
-        </div> 
+            <a class="btn btn-success new"><i class="icon-white icon-upload"></i> New</a>
     </script>
+
+
 
     <script type="text/template" id="tpl-song-list-item">
         <div class="span4">
@@ -36,7 +39,6 @@
             <a class="btn btn-primary store"><i class="icon-white icon-shopping-cart"> </i> Buy</a> 
             <a class="btn btn-success play"><i class="icon-white icon-play"></i> Play</a>
             <a class="btn btn-success pause"><i class="icon-white icon-pause"></i> Pause</a>
-
             <button class="bachata"><i class="icon icon-arrow-right"></i> bachata</a>
 
         </div><!-- span4 --> 
@@ -57,7 +59,7 @@
                         <p> Price &#36: <%= price %> </p> 
                        
                     </dl>         
-                </div><!-- end caption --> 
+                </div> 
             </div><!-- end box --> 
         </div><!-- span8 --> 
 
@@ -115,13 +117,9 @@
             <label>Price:</label>
             <input type="text" id="price" name="price" value="<%= price%>">
             <button class="save">Save</button>
-            <button class="delete">Delete</button>
         </div>
     </script>
 
-<script src="/static/js/lib/underscore.js"></script>
-<script src="/static/js/lib/backbone.js"></script>
-<script src="/static/js/lib/app.js"></script>
 
  
 
@@ -132,10 +130,13 @@
     </div>
 
 
-
+<div id="header"></div>
 <div id="content"></div>
 
 
 
+<script src="/static/js/lib/underscore.js"></script>
+<script src="/static/js/lib/backbone.js"></script>
+<script src="/static/js/lib/app.js"></script>
 
 {% endblock content %}
