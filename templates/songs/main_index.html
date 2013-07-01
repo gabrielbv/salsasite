@@ -31,7 +31,7 @@
     </script>
 
     <script type="text/template" id="tpl-song-filter">
-    <div class="span4">
+    <div class="span2">
         <a class="btn btn-primary bachata"><i class="icon icon-arrow-right"></i> Bachata</a>
         </div>
         </script>
@@ -127,29 +127,38 @@
         </div>
     </script>
 
-<script src="/static/js/lib/underscore.js"></script>
-<script src="/static/js/lib/backbone.js"></script>
-<script src="/static/js/lib/app.js"></script>
+    <script type="text/template" id="tpl-song-list">
 
+     <div class="span12">
+        <a class="btn btn-primary bachata"><i class="icon icon-arrow-right"></i> Bachata</a>
+        <a class="btn btn-primary kizomba"><i class="icon icon-arrow-right"></i> Kizomba</a>
+        <a class="btn btn-primary salsa"><i class="icon icon-arrow-right"></i> Salsa</a>
+        </div>
+        
+
+    </script>
  
-
+    
     <div class="span12">
         <div class="page-header">
 
           <h3>Music<small> Our singles</small></h3><hr class="hr2">
-        <script type="text/template" id="tpl-song-filter">
-          <input type="button" value="Bachata" onclick="addRow()" />
+        
+               
        
-       </script>
         </div>
 
     </div>
 
 
 
-<div id="content"></div>
+<div id="content">
 
+</div>
 
+<script src="/static/js/lib/underscore.js"></script>
+<script src="/static/js/lib/backbone.js"></script>
+<script src="/static/js/lib/app.js"></script>
 
 
 {% endblock content %}

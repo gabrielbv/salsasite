@@ -19,8 +19,8 @@ window.SongCollection=Backbone.Collection.extend({
 });
 
 window.SongListView = Backbone.View.extend({
-    template:_.template($('#tpl-song-filter').html()),
     tagName:"div",
+    template: _.template($("#tpl-song-list").html()),
 
     
     events:{
@@ -29,25 +29,24 @@ window.SongListView = Backbone.View.extend({
         "click .kizomba": "selectkizomba",
         "click .salsa":"selectsalsa",
               
-    },
+    },  
 
     selectbachata:function(event){
         console.log("bachata")
-        app.navigate("/songs/?genre=bachata",true);
+        app.navigate("genre/bachata/",true);
 
         return false;
     },
 
     selectkizomba:function(event){
-              
-        app.navigate(this.model.id+"/songs/?genre=kizomba",true);
+        app.navigate("genre/kizomba/",true);
 
         return false;
     },
 
     selectsalsa:function(event){
               
-        app.navigate(this.model.id+"/songs/?genre=salsa",true);
+        app.navigate("genre/salsa/",true);
 
         return false;
     },
@@ -55,16 +54,22 @@ window.SongListView = Backbone.View.extend({
     initialize:function(){
 
         this.model.bind("reset",this.render,this);
+        _.bindAll(this,"selectbachata");
         var self = this;
     },
     render:function(eventName){
       
-        console.log(this.model.models.length)
+            
+
+        
+        $(this.el).html(this.template());
+       
         _.each(this.model.models,function(song){
            
             $(this.el).append(new SongListItemView({model:song}).render().el);
 
-        },this);
+        },this); 
+
         return this;
     }
 
@@ -227,10 +232,13 @@ window.HeaderView= Backbone.View.extend({
 var AppRouter = Backbone.Router.extend({
     routes:{
         '': "list",
+        
         'new':"newSong",
-        ':id': "songDetails",
+        'genre/:genre/':'list',
+        ':id/': "songDetails",
         ':id/edit':"songEdit",
-        ':id/buy' : "songBuy"
+        ':id/buy' : "songBuy",
+
         
 
     },
@@ -243,13 +251,19 @@ var AppRouter = Backbone.Router.extend({
     },
 
 
-    
-    list:function(){
-        console.log("list")
+
+    list:function(genre){
+        console.log("list",genre)
         this.songList = new SongCollection();
         var self=this;
+        
+        data = {}
+        if (genre != undefined){
+            data['genre'] = genre
+        }
 
         this.songList.fetch({
+            data: data,
             success:function(){
                 
                 console.log("success");
@@ -278,7 +292,7 @@ var AppRouter = Backbone.Router.extend({
             $('#content').html(this.songView.render().el);
 
 
-        }
+        };
 
     },
 
