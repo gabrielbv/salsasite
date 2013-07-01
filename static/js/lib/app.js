@@ -145,7 +145,7 @@ window.SongEditView = Backbone.View.extend({
 
             var self=this;
 
-            app.songList.create(this.model,{
+            app.songList.create(this.model, {
                 success:function(){
 
                     app.navigate("confirm", true);    
@@ -153,12 +153,19 @@ window.SongEditView = Backbone.View.extend({
                 }
             });
 
-        } else {
-            this.model.save();
+        } else 
+
+        {
+            this.model.save(null, {
+                success: function () {
+                    app.navigate("", true);    
+                }
+            });
+
         }
 
         return false;
-    },
+    }
 
 
 });
