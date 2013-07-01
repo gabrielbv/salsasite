@@ -102,7 +102,6 @@ window.SongView = Backbone.View.extend({
 
     render:function(eventName){
 
-        console.log(1111);
 
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
@@ -149,7 +148,7 @@ window.SongEditView = Backbone.View.extend({
             app.songList.create(this.model,{
                 success:function(){
 
-                    app.navigate('', true);    
+                    app.navigate("confirm", true);    
 
                 }
             });
@@ -174,7 +173,9 @@ window.HeaderView= Backbone.View.extend({
     },
 
     render:function(eventName){
+        console.log("render")
         $(this.el).html(this.template());
+        console.log($(this.el).html())
         return this;
     },
 
@@ -198,18 +199,23 @@ var AppRouter = Backbone.Router.extend({
     routes:{
         '': "list",
         'new':"newSong",
+        'confirm':"confirmSong",
         ':id': "songDetails",
         ':id/edit':"songEdit",
         ':id/buy' : "songBuy"
-        
+
+
 
     },
 
     initialize:function () {
 
-        console.log("initialize");
+        console.log("initialize", $('#header'));
 
-        $('#container').html(new HeaderView().render().el);
+        $('#header').html(new HeaderView().render().el);
+
+        console.log($('#header').html())
+
     },
 
 
@@ -244,9 +250,7 @@ var AppRouter = Backbone.Router.extend({
             this.song = this.songList.get(id);
             this.songView = new SongView({model:this.song});
 
-
             $('#content').html(this.songView.render().el);
-
 
         }
 
@@ -257,7 +261,7 @@ var AppRouter = Backbone.Router.extend({
         console.log("newSong");
         
         this.songEditView = new SongEditView({model:new Song()});
-        $('#content').html(this.songEditView.render().el);
+        $('#header').html(this.songEditView.render().el);
     },
 
     songEdit:function(id){
@@ -268,6 +272,12 @@ var AppRouter = Backbone.Router.extend({
         this.songEditView = new SongEditView({model:this.song});
         $('#content').html(this.songEditView.render().el);
 
+    },
+
+    confirmSong:function(){
+
+        console.log("confirmation");
+        $('#header').html("The new song has been saved. Please wait for administrator to approve it");
     }
 
 

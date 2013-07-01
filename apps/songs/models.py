@@ -28,7 +28,7 @@ class Song(models.Model):
 	status = models.CharField(max_length = 32, choices = STATS, default="draft")
 	price = models.PositiveSmallIntegerField(null=True,blank=True, verbose_name="Price $")
 	
-	user = models.ForeignKey(User)
+	# user = models.ForeignKey(User)
 
 
 	def __unicode__(self):
