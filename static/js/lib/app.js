@@ -167,7 +167,7 @@ window.SongEditView = Backbone.View.extend({
 
 
 window.HeaderView= Backbone.View.extend({
-    template:_.template($('#tpl-new').html()),
+    template:_.template($('#new').html()),
     
     initialize:function(){
         this.render();
@@ -209,7 +209,7 @@ var AppRouter = Backbone.Router.extend({
 
         console.log("initialize");
 
-        $('#container').html(new HeaderView().render().el);
+        $('#span12').html(new HeaderView().render().el);
     },
 
 
