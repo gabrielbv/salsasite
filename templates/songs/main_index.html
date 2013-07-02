@@ -33,15 +33,18 @@
 
 
 
+
     <script type="text/template" id="tpl-song-list-item">
         <div class="span4">
             
             <a class="btn btn-primary store"><i class="icon-white icon-shopping-cart"> </i> Buy</a> 
             <a class="btn btn-success play"><i class="icon-white icon-play"></i> Play</a>
             <a class="btn btn-success pause"><i class="icon-white icon-pause"></i> Pause</a>
-            <button class="bachata"><i class="icon icon-arrow-right"></i> bachata</a>
 
-        </div><!-- span4 --> 
+
+            
+
+        </div><!-- --> 
 
         <div class="span8">
             <div class="box">
@@ -60,8 +63,9 @@
                        
                     </dl>         
                 </div> 
-            </div><!-- end box --> 
-        </div><!-- span8 --> 
+                 <a class="btn btn-success edit"><i class="icon-white icon-edit"></i> Edit</a>
+            </div> 
+        </div> 
 
     </script>
 
@@ -120,23 +124,39 @@
         </div>
     </script>
 
+    <script type="text/template" id="tpl-song-list">
 
+
+     <div class="span12">
+        <a class="btn btn-primary bachata"><i class="icon icon-arrow-right"></i> Bachata</a>
+        <a class="btn btn-primary kizomba"><i class="icon icon-arrow-right"></i> Kizomba</a>
+        <a class="btn btn-primary salsa"><i class="icon icon-arrow-right"></i> Salsa</a>
+        </div>
+        
+
+    </script>
  
-
+    
     <div class="span12">
         <div class="page-header">
+
           <h3>Music<small> Our singles</small></h3><hr class="hr2">
+        
+               
+       
         </div>
+
     </div>
+
 
 
 <div id="header"></div>
 <div id="content"></div>
 
-
-
 <script src="/static/js/lib/underscore.js"></script>
 <script src="/static/js/lib/backbone.js"></script>
 <script src="/static/js/lib/app.js"></script>
+
+
 
 {% endblock content %}
