@@ -255,6 +255,7 @@ var AppRouter = Backbone.Router.extend({
 
     initialize:function () {
 
+        this.songList = new SongCollection();
         console.log("initialize", $('#header'));
 
         $('#header').html(new HeaderView().render().el);
@@ -267,7 +268,7 @@ var AppRouter = Backbone.Router.extend({
 
     list:function(genre){
         console.log("list",genre)
-        this.songList = new SongCollection();
+        
         var self=this;
         
         data = {}
