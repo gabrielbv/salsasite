@@ -1,4 +1,13 @@
 window.Song = Backbone.Model.extend({
+    /*urlRoot:"/api/v1/song/",*/
+    url: function() {
+
+        var url="/api/v1/song/"+this.get("id")+"/"
+
+        return url
+
+    },
+
     defaults:{
         "id":null,
         "title":"",
@@ -11,7 +20,7 @@ window.Song = Backbone.Model.extend({
 
 window.SongCollection=Backbone.Collection.extend({
     model:Song,
-    url:"/api/song/",
+    url:"/api/v1/song/",
 
     parse:function(response){
         return response.objects
@@ -256,6 +265,7 @@ var AppRouter = Backbone.Router.extend({
     initialize:function () {
 
         this.songList = new SongCollection();
+        /*this.songList.fetch();*/
         console.log("initialize", $('#header'));
 
         $('#header').html(new HeaderView().render().el);
@@ -320,9 +330,23 @@ var AppRouter = Backbone.Router.extend({
 
         console.log("songEdit");
 
-        this.song = this.songList.get(id);
-        this.songEditView = new SongEditView({model:this.song});
-        $('#content').html(this.songEditView.render().el);
+        this.currentSong = new Song({id:id});
+
+        console.log(this.currentSong.get("id"));   
+
+        self=this
+
+        this.currentSong.fetch({ 
+
+            success:function(){
+
+            self.songEditView = new SongEditView({model:self.currentSong});
+
+            $('#content').html(self.songEditView.render().el);
+
+            },
+        });
+
 
     },
 
@@ -334,8 +358,8 @@ var AppRouter = Backbone.Router.extend({
 
 
 });
-
-
+                
 var app = new AppRouter();
 Backbone.history.start();
-       
+
+

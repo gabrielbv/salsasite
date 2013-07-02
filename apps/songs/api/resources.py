@@ -5,17 +5,17 @@ from tastypie import fields
 
 
 from songs.models import Song
-from accounts.models import UserProfile
+from accounts.models import User
 
 
-# class UserResource(ModelResource):
-# 	class Meta:
-# 	    queryset = UserProfile.objects.all()
-#         resource_name = 'user'
+class UserResource(ModelResource):
+ 	class Meta:
+ 	    queryset = User.objects.all()
+        resource_name = 'user'
 
 class SongResource(ModelResource):
 
-    #user = fields.ForeignKey(UserResource, 'user')
+    user = fields.ForeignKey(UserResource, 'user', full=True)
 
 
     def determine_format(self,request):
