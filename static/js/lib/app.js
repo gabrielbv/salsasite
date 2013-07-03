@@ -277,7 +277,7 @@ var AppRouter = Backbone.Router.extend({
 
 
 
-    list:function(genre){
+    list:function(genre, status){
         console.log("list",genre)
         
         var self=this;
@@ -286,7 +286,9 @@ var AppRouter = Backbone.Router.extend({
         if (genre != undefined){
             data['genre'] = genre
         }
-
+        if (status != undefined){
+            data['status'] = status
+        }
         this.songList.fetch({
             data: data,
             success:function(){
@@ -358,9 +360,9 @@ var AppRouter = Backbone.Router.extend({
     },
 
     upsongs:function(){
-
-        console.log("upsongs")
-        $('#content'.html(this.UpSongsView.render().el))
+        this.songList.url="/api/v1/usersongs/";
+        this.list()
+        
     }
 
 
@@ -368,3 +370,4 @@ var AppRouter = Backbone.Router.extend({
     
 var app = new AppRouter();
 Backbone.history.start();
+

@@ -2,8 +2,7 @@ from django.conf.urls.defaults import *
 
 from tastypie.api import Api
 from django.utils import formats
-from songs.api.resources import SongResource
-from songs.api.resources import UserResource
+from songs.api.resources import SongResource, UserResource, UserSongsResource
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
@@ -20,7 +19,7 @@ admin.autodiscover()
 v1_api = Api(api_name='v1')
 v1_api.register(SongResource())
 v1_api.register(UserResource())
-
+v1_api.register(UserSongsResource())
 
 
 urlpatterns = patterns('',
