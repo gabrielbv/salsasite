@@ -244,11 +244,11 @@ window.HeaderView= Backbone.View.extend({
     }
 });
 
-window.UpSonsView = Backbone.View.extend({
+window.UpSongsView = Backbone.View.extend({
     template : _.template($('#tpl-uploaded-songs').html()),
 
     render:function(eventName){
-
+        console.log("upsongsview")
 
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
@@ -264,6 +264,7 @@ var AppRouter = Backbone.Router.extend({
         '': "list",
         
         'new':"newSong",
+        'mysongs':'upsongs',
         'confirm':"confirmSong",
         'genre/:genre/':'list',
         ':id/': "songDetails",
@@ -367,12 +368,16 @@ var AppRouter = Backbone.Router.extend({
 
         console.log("confirmation");
         $('#header').html("The new song has been saved. Please wait for administrator to approve it");
+    },
+
+    upsongs:function(){
+
+        console.log("upsongs")
+        $('#content'.html(this.UpSongsView.render().el))
     }
 
 
 });
-                
+    
 var app = new AppRouter();
 Backbone.history.start();
-
-

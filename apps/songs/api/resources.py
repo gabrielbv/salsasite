@@ -34,5 +34,6 @@ class SongResource(ModelResource):
         return super(SongResource,self).obj_create(bundle, user=bundle.request.user)
 
     def apply_authorization_limits(self,request,object_list):
+        print("authlimit")
         return object_list.filter(user=request.user)
 
