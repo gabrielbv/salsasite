@@ -244,20 +244,7 @@ window.HeaderView= Backbone.View.extend({
     }
 });
 
-window.UpSongsView = Backbone.View.extend({
-    template : _.template($('#tpl-uploaded-songs').html()),
 
-    render:function(eventName){
-        console.log("upsongsview")
-
-        $(this.el).html(this.template(this.model.toJSON()));
-        return this;
-
-    }
-
-
-
-});
 
 var AppRouter = Backbone.Router.extend({
     routes:{

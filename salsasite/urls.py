@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^$', 'salsasite.views.home', name='home'),
     url(r'^news/$', 'salsasite.views.news', name='news'),
     url(r'^gallery/$', 'salsasite.views.gallery', name='gallery'),
+    url(r'^uploadedsongs/$', 'salsasite.views.upsongs', name='upsongs'),
  
     
 
