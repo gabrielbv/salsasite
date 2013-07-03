@@ -15,7 +15,7 @@ def gallery(request):
 	
 	return render(request, 'gallery.html')
         
-def Pdetails(request):
+def upsongs(request):
 	
-	return render(request, 'Pdetails.html')
+	return render(request, 'user_songs.html')
     
