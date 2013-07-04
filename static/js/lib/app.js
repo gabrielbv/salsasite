@@ -217,9 +217,12 @@ window.SongEditView = Backbone.View.extend({
         {
             this.model.save(null, {
                 success: function () {
-                    app.navigate("", true);    
+                    app.navigate("", true);  
+
+                    return false  
                 }
             });
+
 
         }
 
@@ -353,7 +356,7 @@ var AppRouter = Backbone.Router.extend({
 
         this.currentSong.fetch({ 
 
-            success:function(){
+            success:function(){ 
 
             self.songEditView = new SongEditView({model:self.currentSong});
 
