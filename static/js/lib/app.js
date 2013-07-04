@@ -227,7 +227,7 @@ window.SongEditView = Backbone.View.extend({
 
             var self=this;
 
-            app.songList.create(this.model, {
+            app.songList.create(self.model, {
                 success:function(){
 
                     app.navigate("confirm", true);    
@@ -238,7 +238,9 @@ window.SongEditView = Backbone.View.extend({
         } else 
 
         {
-            this.model.save(null, {
+
+            var self=this
+            self.model.save({
                 success: function () {
                     app.navigate("", true);    
                 }
@@ -322,12 +324,14 @@ var AppRouter = Backbone.Router.extend({
         var self=this;
         
         data = {}
-        if (genre != undefined){
-            data['genre'] = genre
-        }
         if (status != undefined){
             data['status'] = status
         }
+
+        if (genre != undefined){
+            data['genre'] = genre
+        }
+
         this.songList.fetch({
             data: data,
             success:function(){

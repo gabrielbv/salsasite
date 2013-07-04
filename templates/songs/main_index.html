@@ -62,7 +62,8 @@
                        
                     </dl>         
                 </div>
-                 <a class="btn btn-success edit"><i class="icon-white icon-edit"></i> Edit</a> 
+                <% if (USER_ID == user.id) { %> <a class="btn btn-success edit"><i class="icon-white icon-edit"></i> Edit</a> <% }  %>
+                  
 
 
             </div>
