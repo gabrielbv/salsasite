@@ -13,9 +13,10 @@ class UserResource(ModelResource):
  	    queryset = User.objects.all()
         resource_name = 'user'
 
+
 class SongResource(ModelResource):
 
-    user = fields.ForeignKey(UserResource, 'user', full=True)
+    # user = fields.ForeignKey(UserResource, 'user', full=True)
 
 
     def determine_format(self,request):
