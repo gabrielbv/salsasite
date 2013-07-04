@@ -293,7 +293,7 @@ var AppRouter = Backbone.Router.extend({
         'new':"newSong",
         'mysongs':'upsongs',
         'confirm':"confirmSong",
-        'status//:status/':'upsongs',   
+        'status/:status/':'upsongs',   
         'genre/:genre/':'list',
         ':id/': "songDetails",
         ':id/edit':"songEdit",
@@ -402,7 +402,7 @@ var AppRouter = Backbone.Router.extend({
         $('#header').html("The new song has been saved. Please wait for administrator to approve it");
     },
 
-    upsongs:function(){
+    upsongs:function(status){
         this.songList.url="/api/v1/usersongs/";
         this.list()
         
