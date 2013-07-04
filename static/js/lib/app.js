@@ -326,6 +326,7 @@ var AppRouter = Backbone.Router.extend({
         data = {}
         if (status != undefined){
             data['status'] = status
+
         }
 
         if (genre != undefined){
@@ -403,8 +404,9 @@ var AppRouter = Backbone.Router.extend({
     },
 
     upsongs:function(status){
+        genre=undefined
         this.songList.url="/api/v1/usersongs/";
-        this.list()
+        this.list(undefined,status)
         
     }
 
