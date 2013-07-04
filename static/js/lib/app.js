@@ -1,10 +1,28 @@
 window.Song = Backbone.Model.extend({
     /*urlRoot:"/api/v1/song/",*/
+    
+
     url: function() {
+
+
+        if (this.get('id') != null){
 
         var url="/api/v1/song/"+this.get("id")+"/"
 
-        return url
+        
+
+
+        }
+
+        else
+
+        {
+
+            var url="/api/v1/song/"
+        }
+        
+    return url
+
 
     },
 
