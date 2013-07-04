@@ -76,7 +76,7 @@ window.SongListView = Backbone.View.extend({
 
     selectaproved:function(event){
         console.log("status")      
-        app.navigate("/status/aproved/",true);
+        app.navigate("status/aproved/",true);
 
         return false;
     },    
@@ -291,7 +291,7 @@ var AppRouter = Backbone.Router.extend({
         'new':"newSong",
         'mysongs':'upsongs',
         'confirm':"confirmSong",
-        'status/:status/':'list',   
+        'status//:status/':'upsongs',   
         'genre/:genre/':'list',
         ':id/': "songDetails",
         ':id/edit':"songEdit",
