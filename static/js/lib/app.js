@@ -37,6 +37,14 @@ window.SongListView = Backbone.View.extend({
         "click .bachata":"selectbachata",
         "click .kizomba": "selectkizomba",
         "click .salsa":"selectsalsa",
+        
+        "click .mysongs":"mysongs",
+        
+        "click .aproved":"selectaproved",
+        "click .rejected": "selectrejected",
+        "click .pending":"selectpending",
+        "click .draft":"selectdraft",
+
               
     },  
 
@@ -60,6 +68,36 @@ window.SongListView = Backbone.View.extend({
         return false;
     },
 
+
+    mysongs:function(event){
+        app.navigate("mysongs",true)
+        return false;
+    },
+
+    selectaproved:function(event){
+        console.log("status")      
+        app.navigate("/status/aproved/",true);
+
+        return false;
+    },    
+    selectrejected:function(event){
+              
+        app.navigate("status/rejected/",true);
+
+        return false;
+    },
+    selectpending:function(event){
+              
+        app.navigate("status/pending/",true);
+
+        return false;
+    },
+    selectdraft:function(event){
+              
+        app.navigate("status/draft/",true);
+
+        return false;
+    },
     initialize:function(){
 
         this.model.bind("reset",this.render,this);
@@ -253,6 +291,7 @@ var AppRouter = Backbone.Router.extend({
         'new':"newSong",
         'mysongs':'upsongs',
         'confirm':"confirmSong",
+        'status/:status/':'list',   
         'genre/:genre/':'list',
         ':id/': "songDetails",
         ':id/edit':"songEdit",
