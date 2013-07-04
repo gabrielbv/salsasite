@@ -12,7 +12,7 @@ class UserResource(ModelResource):
  	class Meta:
  	    queryset = User.objects.all()
         resource_name = 'user'
-        
+        authorization=Authorization()
 
 class SongResource(ModelResource):
 

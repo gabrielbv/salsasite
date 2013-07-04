@@ -9,9 +9,6 @@ window.Song = Backbone.Model.extend({
 
         var url="/api/v1/song/"+this.get("id")+"/"
 
-        
-
-
         }
 
         else
@@ -20,7 +17,7 @@ window.Song = Backbone.Model.extend({
 
             var url="/api/v1/song/"
         }
-        
+
     return url
 
 
