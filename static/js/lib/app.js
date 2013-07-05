@@ -1,10 +1,25 @@
 window.Song = Backbone.Model.extend({
     /*urlRoot:"/api/v1/song/",*/
+    
+
     url: function() {
+
+
+        if (this.get('id') != null){
 
         var url="/api/v1/song/"+this.get("id")+"/"
 
-        return url
+        }
+
+        else
+
+        {
+
+            var url="/api/v1/song/"
+        }
+
+    return url
+
 
     },
 
@@ -202,9 +217,12 @@ window.SongEditView = Backbone.View.extend({
         {
             this.model.save(null, {
                 success: function () {
-                    app.navigate("", true);    
+                    app.navigate("", true);  
+
+                    /*return false  */
                 }
             });
+
 
         }
 
@@ -330,6 +348,13 @@ var AppRouter = Backbone.Router.extend({
 
         console.log("songEdit");
 
+        if ( USER_ID == null){
+
+            window.location = "/accounts/login/"
+            return false
+
+        };
+
         this.currentSong = new Song({id:id});
 
         console.log(this.currentSong.get("id"));   
@@ -338,7 +363,7 @@ var AppRouter = Backbone.Router.extend({
 
         this.currentSong.fetch({ 
 
-            success:function(){
+            success:function(){ 
 
             self.songEditView = new SongEditView({model:self.currentSong});
 
