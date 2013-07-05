@@ -219,7 +219,7 @@ window.SongEditView = Backbone.View.extend({
                 success: function () {
                     app.navigate("", true);  
 
-                    return false  
+                    /*return false  */
                 }
             });
 
@@ -347,6 +347,13 @@ var AppRouter = Backbone.Router.extend({
     songEdit:function(id){
 
         console.log("songEdit");
+
+        if ( USER_ID == null){
+
+            window.location = "/accounts/login/"
+            return false
+
+        };
 
         this.currentSong = new Song({id:id});
 

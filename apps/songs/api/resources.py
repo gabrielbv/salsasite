@@ -10,20 +10,17 @@ from accounts.models import User
 
 class UserResource(ModelResource):
 
-    allowed_methods = ['get', 'post', 'put', 'delete']
 
     class Meta:
 
         queryset = User.objects.all()
         resource_name = 'user'
         authorization=Authorization()
-        authorization = DjangoAuthorization()
             
 
 class SongResource(ModelResource):
 
     user = fields.ForeignKey(UserResource, 'user', full=True)
-    allowed_methods = ['get', 'post', 'put', 'delete']
 
     def determine_format(self,request):
         return 'application/json'
@@ -34,7 +31,6 @@ class SongResource(ModelResource):
         }
         authorization=Authorization()  #custom seting for add and edit tastypie-backbone
         always_return_data=True #custom seting for retrieving data in request POST
-        authorization = DjangoAuthorization()
 
     def obj_create(self,bundle,**kwargs):
         print("obj_create")
@@ -42,8 +38,4 @@ class SongResource(ModelResource):
 
     def apply_authorization_limits(self,request,object_list):
         return object_list.filter(user=request.user)
-
-    def dehydrate(self, bundle):
-        bundle.data['custom_field'] = "Whatever you want"
-        return bundle
 

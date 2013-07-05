@@ -2,7 +2,8 @@
 {% block head %}
 
     <script> 
-        USER_ID={{ request.user.id  }}
+
+        USER_ID={{ request.user.id|default:"null"  }}
 
     </script>
 
