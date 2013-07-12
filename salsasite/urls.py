@@ -26,11 +26,8 @@ v1_api.register(UserResource())
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'salsasite.views.home', name='home'),
-    url(r'^news/$', 'salsasite.views.news', name='news'),
     url(r'^gallery/$', 'salsasite.views.gallery', name='gallery'),
     url(r'^Pdetails/$', 'salsasite.views.Pdetails', name='Pdetails'),
-
-    
 
     # url(r'^salsasite/', include('salsasite.foo.urls')),
 
@@ -43,7 +40,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     url(r'^songs/', include('songs.urls')),
     url(r'^purchases/', include ('purchases.urls')),
-    #url(r'^news/', include ('salsasite.urls')),
+    url(r'^news/', include('news.urls')),
 
     #(r'^music/', include('songs.urls')),
 
