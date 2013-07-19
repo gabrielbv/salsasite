@@ -42,6 +42,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     url(r'^songs/', include('songs.urls')),
     url(r'^purchases/', include ('purchases.urls')),
+    url(r'^events/', include ('events.urls')),
     #url(r'^news/', include ('salsasite.urls')),
 
     #(r'^music/', include('songs.urls')),

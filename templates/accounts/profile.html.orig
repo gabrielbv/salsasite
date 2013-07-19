@@ -1,0 +1,32 @@
+{% extends "site_base.html" %}
+{% block nav_profile %}class="active"{% endblock%}
+
+    {% block content %}
+
+
+    <div class="span12">
+        <div class="page-header">
+          <h3>Hello! <br> <small>  This is your profile!</small></h3><hr class="hr2">
+        </div>
+    </div>
+
+
+	<p> {{ first_name }} </p>	
+	<p> {{ last_name }} </p>	
+	<p> {{ profile.get_country_display }} </p>
+
+    <div>
+        <a href="{% url 'user_edit' %}" class="btn btn-primary edit"><i class="icon-white icon-edit"> </i> Edit</a> 
+    </div>
+
+<<<<<<< HEAD
+    
+=======
+    <div>
+        <a href="{% url 'upsongs' %}" class="btn btn-primary upsongs"><i class="icon-white icon-edit"> </i> Uploaded Songs</a> 
+    </div>
+>>>>>>> 370015051bd4206d301ae355076dc129aa0d25f1
+
+
+    {% endblock content %}
+
