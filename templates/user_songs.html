@@ -1,0 +1,41 @@
+{% extends "site_base.html" %}
+
+    	{% block content %}
+
+    	<script type="text/template" id="tpl-uploaded-songs">
+
+
+        <div class="span8">
+            <div class="box">
+                <div class="thumbnail-header color3">
+                    <small><i class="icon-white icon-music"></i> Music<span class="float-right"></span></small>
+                </div><!-- end thumbnail-header --> 
+                <div class="caption music-bg">
+                    <h4><%= title%></h4>
+                    <hr class="hr2">
+                    <dl class="dl">
+                        <p> Artist: <%= artist %> </p>  
+                        <p> Genre: <%= genre %> </p>
+                        <p> BPM: <%= bpm %> </p>
+                        <p> Status: <%= status %> </p>
+                        <p> Price &#36: <%= price %> </p> 
+                       
+                    </dl>         
+                </div>
+                 <a class="btn btn-success edit"><i class="icon-white icon-edit"></i> Edit</a> 
+
+
+            </div>
+        </div>
+
+
+    </script>
+
+
+<div id="content"></div>
+
+<script src="/static/js/lib/underscore.js"></script>
+<script src="/static/js/lib/backbone.js"></script>
+<script src="/static/js/lib/app.js"></script>
+
+    	{% endblock content %}

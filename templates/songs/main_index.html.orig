@@ -41,6 +41,11 @@
             <a class="btn btn-primary store"><i class="icon-white icon-shopping-cart"> </i> Buy</a> 
             <a class="btn btn-success play"><i class="icon-white icon-play"></i> Play</a>
             <a class="btn btn-success pause"><i class="icon-white icon-pause"></i> Pause</a>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 370015051bd4206d301ae355076dc129aa0d25f1
             
 
         </div><!-- --> 
@@ -62,8 +67,7 @@
                        
                     </dl>         
                 </div>
-                <% if (USER_ID == user.id) { %> <a class="btn btn-success edit"><i class="icon-white icon-edit"></i> Edit</a> <% }  %>
-                  
+                 <a class="btn btn-success edit"><i class="icon-white icon-edit"></i> Edit</a> 
 
 
             </div>
@@ -131,25 +135,11 @@
 
 
      <div class="span12">
-        
         <a class="btn btn-primary bachata"><i class="icon icon-arrow-right"></i> Bachata</a>
         <a class="btn btn-primary kizomba"><i class="icon icon-arrow-right"></i> Kizomba</a>
         <a class="btn btn-primary salsa"><i class="icon icon-arrow-right"></i> Salsa</a>
         </div>
-
-
-     <div class="span12">
-        <a class="btn btn-primary mysongs"><i class="icon icon-arrow-right"></i> MySongs</a>
-
-        </div>
-      
-      <div class="span12">
         
-        <a class="btn btn-primary aproved"><i class="icon icon-arrow-right"></i> Aproved</a>
-        <a class="btn btn-primary rejected"><i class="icon icon-arrow-right"></i> Rejected</a>
-        <a class="btn btn-primary pending"><i class="icon icon-arrow-right"></i> Pending</a>
-        <a class="btn btn-primary draft"><i class="icon icon-arrow-right"></i> Draft</a>
-        </div>   
 
     </script>
      
@@ -178,7 +168,11 @@
             </div>
         </div>
     </script>
+<<<<<<< HEAD
     {% endblock backbone_templates %}
+=======
+
+>>>>>>> 370015051bd4206d301ae355076dc129aa0d25f1
 
     <div class="span12">
         <div class="page-header">

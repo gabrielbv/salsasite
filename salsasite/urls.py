@@ -2,8 +2,7 @@ from django.conf.urls.defaults import *
 
 from tastypie.api import Api
 from django.utils import formats
-from songs.api.resources import SongResource
-from songs.api.resources import UserResource
+from songs.api.resources import SongResource, UserResource, UserSongsResource
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
@@ -20,7 +19,7 @@ admin.autodiscover()
 v1_api = Api(api_name='v1')
 v1_api.register(SongResource())
 v1_api.register(UserResource())
-
+v1_api.register(UserSongsResource())
 
 
 urlpatterns = patterns('',
@@ -28,8 +27,8 @@ urlpatterns = patterns('',
     url(r'^$', 'salsasite.views.home', name='home'),
     url(r'^news/$', 'salsasite.views.news', name='news'),
     url(r'^gallery/$', 'salsasite.views.gallery', name='gallery'),
-    url(r'^Pdetails/$', 'salsasite.views.Pdetails', name='Pdetails'),
-
+    url(r'^uploadedsongs/$', 'salsasite.views.upsongs', name='upsongs'),
+ 
     
 
     # url(r'^salsasite/', include('salsasite.foo.urls')),
@@ -43,6 +42,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     url(r'^songs/', include('songs.urls')),
     url(r'^purchases/', include ('purchases.urls')),
+    url(r'^events/', include ('events.urls')),
     #url(r'^news/', include ('salsasite.urls')),
 
     #(r'^music/', include('songs.urls')),

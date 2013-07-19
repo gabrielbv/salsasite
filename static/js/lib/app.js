@@ -37,6 +37,14 @@ window.SongListView = Backbone.View.extend({
         "click .bachata":"selectbachata",
         "click .kizomba": "selectkizomba",
         "click .salsa":"selectsalsa",
+        
+        "click .mysongs":"mysongs",
+        
+        "click .aproved":"selectaproved",
+        "click .rejected": "selectrejected",
+        "click .pending":"selectpending",
+        "click .draft":"selectdraft",
+
               
     },  
 
@@ -60,6 +68,36 @@ window.SongListView = Backbone.View.extend({
         return false;
     },
 
+
+    mysongs:function(event){
+        app.navigate("mysongs",true)
+        return false;
+    },
+
+    selectaproved:function(event){
+        console.log("status")      
+        app.navigate("status/aproved/",true);
+
+        return false;
+    },    
+    selectrejected:function(event){
+              
+        app.navigate("status/rejected/",true);
+
+        return false;
+    },
+    selectpending:function(event){
+              
+        app.navigate("status/pending/",true);
+
+        return false;
+    },
+    selectdraft:function(event){
+              
+        app.navigate("status/draft/",true);
+
+        return false;
+    },
     initialize:function(){
 
         this.model.bind("reset",this.render,this);
@@ -189,7 +227,7 @@ window.SongEditView = Backbone.View.extend({
 
             var self=this;
 
-            app.songList.create(this.model, {
+            app.songList.create(self.model, {
                 success:function(){
 
                     app.navigate("confirm", true);    
@@ -200,7 +238,9 @@ window.SongEditView = Backbone.View.extend({
         } else 
 
         {
-            this.model.save(null, {
+
+            var self=this
+            self.model.save({
                 success: function () {
                     app.navigate("", true);    
                 }
@@ -251,7 +291,9 @@ var AppRouter = Backbone.Router.extend({
         '': "list",
         
         'new':"newSong",
+        'mysongs':'upsongs',
         'confirm':"confirmSong",
+        'status/:status/':'upsongs',   
         'genre/:genre/':'list',
         ':id/': "songDetails",
         ':id/edit':"songEdit",
@@ -276,12 +318,17 @@ var AppRouter = Backbone.Router.extend({
 
 
 
-    list:function(genre){
+    list:function(genre, status){
         console.log("list",genre)
         
         var self=this;
         
         data = {}
+        if (status != undefined){
+            data['status'] = status
+
+        }
+
         if (genre != undefined){
             data['genre'] = genre
         }
@@ -354,12 +401,18 @@ var AppRouter = Backbone.Router.extend({
 
         console.log("confirmation");
         $('#header').html("The new song has been saved. Please wait for administrator to approve it");
+    },
+
+    upsongs:function(status){
+        genre=undefined
+        this.songList.url="/api/v1/usersongs/";
+        this.list(undefined,status)
+        
     }
 
 
 });
-                
+    
 var app = new AppRouter();
 Backbone.history.start();
-
 

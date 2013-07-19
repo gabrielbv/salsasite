@@ -1,0 +1,57 @@
+{% extends "site_base.html" %}
+
+{%block nav_events%}class='active'{%endblock%}
+
+{% block content %}
+
+
+<div class="span12">
+        <div class="page-header">
+          <h3>Shows <small> Our next shows</small></h3><hr class="hr2">
+        </div>
+    </div> 
+        
+
+
+<div class="span12">
+        <div class="box">
+            <div class="thumbnail-header color6">
+                <small><i class="icon-white icon-calendar"></i> Next show<span class="float-right">{{event.start_date|date:'d.m.Y'}}</span></small>
+            </div><!-- end thumbnail-header --> 
+            <div class="caption globe-bg">
+                <a class="accordion-toggle" data-toggle="collapse" href="#show1">
+                <h4>{{event.title}}</h4>
+                <p>{{event.body|linebreaksbr}}</p>
+                </a>
+                <div id="show1" class="collapse in">
+                <hr class="hr2">
+                <dl class="dl-horizontal">
+                    <dt>When</dt>
+                    <dd>{{event.start_date|date:'d F | h:i A'}}</dd>
+                    <dt>Where</dt>
+                    <dd>{{event.location}}</dd>
+                    <dt>Featuring</dt>
+                    <dd>{{event.feature}}</dd>
+                    <dt>Tickets $</dt>
+                    <dd>  {%if event.ticket = 0%}
+                        Free 
+                        {%else%}
+                        {{event.ticket}} 
+
+                        {%endif%}
+                        | {{event.get_ticket_status_display}}
+                    </dd>
+                </dl>
+                <a class="btn btn-success"><i class="icon-white icon-shopping-cart"></i> Get tickets</a>
+                <hr class="hr2">
+                
+            </div><!-- end caption --> 
+            </div><!-- end collapse -->
+        </div><!-- end box --> 
+    </div><!-- span12 --> 
+
+
+
+
+
+{% endblock content %}
