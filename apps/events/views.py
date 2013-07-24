@@ -3,13 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect ,Http404
 from django.shortcuts import render
 from django.utils import timezone
 from django.core.urlresolvers import reverse
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from events.models import Event
 from events.forms import EventForm
-from accounts.models import User
 
 
+@login_required
 def add_event(request):
 
     if request.method == 'POST':
@@ -18,9 +19,13 @@ def add_event(request):
         if form.is_valid():
             event=form.save(commit=False)
             event.user=request.user
-            print (event.user)
-            form.save()
-            return HttpResponseRedirect ('/events/add/')
+            
+
+            event.save()
+
+
+            return HttpResponseRedirect (reverse ('event_details',args=[event.slug,event.id]))
+        
     else:
         form=EventForm()
 
@@ -33,33 +38,49 @@ def list(request):
 
     return render (request,'events/event_list.html',{'events':events})
 
-def event_view(request,event_id):
+def event_view(request,slug,event_id):
     try:
         event=Event.objects.get(pk=event_id)
     except Event.DoesNotExist:
 
+        raise Http404
+
+    if request.user !=event.user and event.event_status not in ['APROVED']: 
         raise Http404
 
     return render(request,'events/details.html',{'event':event})
 
-def event_edit(request,event_id):
+@login_required
+def event_edit(request,slug,event_id):
 
-    
+
     try:
         event=Event.objects.get(pk=event_id)
-
     except Event.DoesNotExist:
         raise Http404
 
-    
-    form=EventForm(instance =event)
-    if request.method == 'POST':
+    if event.event_status not in ["DRAFT","PENDING"] or request.user !=event.user:
+        raise Http404
 
-       
+    form=EventForm(instance=event)
+
+    if request.method =='POST':
+        form=EventForm(request.POST,instance=event)
+
         if form.is_valid():
-                       
-            form.save()
-            return HttpResponseRedirect(reverse('event_edit',args=[event_id]))
-    
-    return render(request,'events/event_edit.html',{'form':form,}) 
+            event=form.save()
+            return HttpResponseRedirect(reverse('event_details',args=[event.slug,event.id]))
+
+    return render(request,'events/event_edit.html',{'form':form,'event':event})
+
+@login_required
+def my_events(request):
+
+    events = Event.objects.filter(user =request.user)
+
+    return render (request,'events/my_events.html',{'events':events})
+
+
+
+
 

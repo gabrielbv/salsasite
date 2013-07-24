@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 from django.contrib.auth.models import User
 
@@ -11,6 +12,7 @@ class Event(models.Model):
     location = models.CharField (max_length = 200)
     feature = models.CharField(max_length = 200)
     ticket = models.PositiveSmallIntegerField()
+    slug=models.SlugField(max_length= 100)
 
     TICKETS = (
         ('NOWAVALIBLE', 'Now Available'),
@@ -31,3 +33,6 @@ class Event(models.Model):
     def __unicode__(self):
         return self.title
 
+    def save(self,*args,**kwargs):
+        self.slug=slugify(unicode(self.title))
+        super(Event,self).save(*args,**kwargs)
