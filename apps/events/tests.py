@@ -29,6 +29,32 @@ class EventsTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response,'No articles yet')
         
+        self.event.event_status='DRAFT'
+        self.event.start_date=timezone.now()+datetime.timedelta(days=1)
+        self.event.save()
+        
+        response =self.client.get(reverse('event_list'))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response,self.event.title)
+
+
+        self.event.event_status='PENDING'
+        self.event.start_date=timezone.now()+datetime.timedelta(days=1)
+        self.event.save()
+        
+        response =self.client.get(reverse('event_list'))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response,self.event.title)    
+
+        self.event.event_status='DENIED'
+        self.event.start_date=timezone.now()+datetime.timedelta(days=1)
+        self.event.save()
+        
+        response =self.client.get(reverse('event_list'))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response,self.event.title)  
+
+
         self.event.event_status='APROVED'
         self.event.start_date=timezone.now()+datetime.timedelta(days=1)
         self.event.save()
@@ -94,6 +120,7 @@ class EventsTest(TestCase):
         data={} 
         response=self.client.post(url,data)
         self.assertEqual(response.status_code,200)
+        self.assertFormError(response,'form','title',[u'This field is required.'])
 
 
         data={
@@ -107,6 +134,7 @@ class EventsTest(TestCase):
             'ticket':'100',
             'ticket_status':'NOWAVALIBLE'
             }
+        
         response=self.client.post(url,data)
         self.assertEqual(response.status_code,302)
 
@@ -130,7 +158,42 @@ class EventsTest(TestCase):
 
         self.client.login(username=self.user2.username,password='pass')
         response=self.client.get(url)
-        self.assertEqual(response.status_code,404)    
+        self.assertEqual(response.status_code,404)
+
+    def test_private_events(self):
+        url=reverse('my_events')
+        response=self.client.get(url)
+        self.assertEqual(response.status_code,302)
+
+        self.client.login(username=self.user1.username,password='pass')
+        response=self.client.get(url)
+        self.assertEqual(response.status_code,200)
+        self.assertContains(response,'event1')
+        self.assertContains(response,'Edit')
+
+        self.event.event_status ='PENDING'
+        self.event.save()
+        response=self.client.get(url)
+        self.assertEqual(response.status_code,200)
+        self.assertContains(response,self.event.title)
+        self.assertContains(response,'Edit')
+
+
+        self.event.event_status ='APROVED'
+        self.event.save()
+        response=self.client.get(url)
+        self.assertEqual(response.status_code,200)
+        self.assertContains(response,self.event.title)
+        self.assertNotContains(response,'Edit')
+
+        self.event.event_status ='DENIED'
+        self.event.save()
+        response=self.client.get(url)
+        self.assertEqual(response.status_code,200)
+        self.assertContains(response,self.event.title)
+        self.assertContains(response,'Edit')
+
+
 
 
 
