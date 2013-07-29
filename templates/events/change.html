@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<form  action="{% url 'edit' event.slug event.id %}" method='post'>
+<form  action="." method='post'>
     {% csrf_token %}
     {{form.as_p}}
 
@@ -10,3 +10,4 @@
 </form>
 
 {% endblock content %}
+

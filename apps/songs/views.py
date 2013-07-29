@@ -95,5 +95,5 @@ def song_edit(request, song_id):
 
 def main_index(request):
 
-        return render(request, 'songs/main_index.html')
+        return render(request, 'songs/songs.html')
 
