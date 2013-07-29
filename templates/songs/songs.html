@@ -1,43 +1,15 @@
 {% extends "site_base.html" %}
 
-
-
-{% block head %}
-<!-- 
-    <script> 
-        USER_ID={{ request.user.id  }}
-
-    </script>
- -->
-    <script src="/static/js/sm2/soundmanager2.js"></script>
-    <script>
-        soundManager.setup({
-          url: '/static/swf/',
-          // optional: use 100% HTML5 mode where available
-          //preferFlash: false,
-          ontimeout: function() {
-            // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-          }
-
-        });
-    </script>
-
-{% endblock head %}
-
-
-
-
 {% block nav_songs %}class="active"{% endblock%}
 
 {% block content %}
 
-  <script type="text/template" id="tpl-song-list">
+    <script type="text/template" id="tpl-song-list">
         
         <p>Artist: <%= artist %> </p>
         
 
     </script>
-
 
 
 <script src="/static/js/lib/underscore.js"></script>
@@ -47,4 +19,7 @@
 <script src="/static/js/songs/collections.js"></script>
 <script src="/static/js/songs/views.js"></script>
 <script src="/static/js/songs/router.js"></script>
+
+
 {% endblock content %}
+

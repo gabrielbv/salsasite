@@ -11,6 +11,7 @@ var AppRouter=Backbone.Router.extend({
         this.songList = new SongCollection();
         this.songListView=new SongListView({model:this.songList});
         this.songList.fetch();
+        $('#container').html(this.songListView.render().el)
     }
 
 

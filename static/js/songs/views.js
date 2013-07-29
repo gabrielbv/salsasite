@@ -9,7 +9,9 @@ window.SongListView=Backbone.View.extend({
     },
 
     render:function(){
-        this.$el.html(this.template({model:Song}))    
+    this.$el.html(this.template(this.model.attributes));
+    return this;
+
     }
 });
 
