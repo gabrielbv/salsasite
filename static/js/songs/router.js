@@ -9,9 +9,11 @@ var AppRouter=Backbone.Router.extend({
     list:function(){
 
         this.songList = new SongCollection();
-        this.songListView=new SongListView({model:this.songList});
+        this.songListView= new SongListView({model:this.songList});
         this.songList.fetch();
-        $('#tpl-song-list').html(this.songListView.render().el)
+
+        $('#content').html(this.songListView.render().el);
+
     }
 
 
