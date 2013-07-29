@@ -1,6 +1,6 @@
 var AppRouter=Backbone.Router.extend({
     routes:{
-        '':'list'
+        '':'list',
     },
 
 
