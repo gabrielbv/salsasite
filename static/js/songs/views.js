@@ -11,9 +11,8 @@ window.SongListView=Backbone.View.extend({
     render:function(){
         _.each(this.model.models,function(song){
 
-        $(this.el).append(new SongListItemView({model:song}).render().el)
-
-    },this);
+           $(this.el).append(new SongListItemView({model:song}).render().el);
+        }, this);
         return this;
     }
 });
