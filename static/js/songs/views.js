@@ -4,8 +4,9 @@ window.SongListView=Backbone.View.extend({
     template:_.template($("#tpl-song-list").html()),
 
     render:function(eventName){
-        text =this.$el.html(this.template({songs: this.collection.toJSON}));
-        console.log(text)
+        this.$el.html(this.template(this.collection.toJSON));
+       var text =this.$el.html(this.template({songs: this.collection.toJSON}));;
+        console.log('text');
         return this;
 
     }
