@@ -10,13 +10,15 @@ var AppRouter=Backbone.Router.extend({
 
         this.songList = new SongCollection();
         this.songListView= new SongListView({collection:this.songList});
+
+        var self = this;
+        
         this.songList.fetch({
+           
             success:function(){
                 
-                text =this.$el.html(this.template({songs:this.collection.toJSON}));
-                console.log(text)
-
-                $('#content').html(this.songListView.render().el);
+               
+                $('#content').html(self.songListView.render().el);
 
             },
         }); 
