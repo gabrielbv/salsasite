@@ -9,9 +9,9 @@ Salsasite.AppRouter=Backbone.Router.extend({
     list:function(){
 
         this.songListView= new Salsasite.SongListView({collection:Salsasite.songs})
-        console.log(this.songListView)
+        
         $('#content').html(this.songListView.render().el);
-
+         console.log(this.songListView.render().el)
 
           
 
