@@ -1,0 +1,39 @@
+{% extends "site_base.html" %}
+
+{% block nav_songs %}class="active"{% endblock%}
+
+{% block head %}
+
+<script src="/static/js/lib/underscore.js"></script>
+<script src="/static/js/lib/backbone.js"></script>
+<script src='/static/js/events/app.js'></script>
+<script src='/static/js/events/setup.js'></script>
+<script src="/static/js/events/models.js"></script>
+<script src="/static/js/events/collections.js"></script>
+<script src="/static/js/events/views.js"></script>
+<script src="/static/js/events/router.js"></script>
+
+    
+
+{% endblock head %}
+
+
+{% block content %}
+<script type="text/template" id="tpl-event-list">
+    
+  <div class="span12">
+            
+
+      <p> <%= title %> </p>
+
+     
+ 
+  </div>
+  
+    </script>
+
+<div id="content"></div>
+
+
+
+{% endblock content %}

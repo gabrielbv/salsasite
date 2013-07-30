@@ -3,6 +3,7 @@ from django.conf.urls import *
 from tastypie.api import Api
 from django.utils import formats
 from songs.api.resources import SongResource, UserResource, UserSongsResource
+from events.apis import EventResource
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
@@ -20,6 +21,7 @@ v1_api = Api(api_name='v1')
 v1_api.register(SongResource())
 v1_api.register(UserResource())
 v1_api.register(UserSongsResource())
+v1_api.register(EventResource())
 
 
 urlpatterns = patterns('',
