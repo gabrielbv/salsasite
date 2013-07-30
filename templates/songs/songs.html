@@ -22,6 +22,14 @@ USER_ID={{ request.user.id }}
         });
     </script>
 
+
+<script src="/static/js/lib/underscore.js"></script>
+<script src="/static/js/lib/backbone.js"></script>
+<script src="/static/js/lib/app.js"></script>
+<script src="/static/js/songs/models.js"></script>
+<script src="/static/js/songs/collections.js"></script>
+<script src="/static/js/songs/views.js"></script>
+<script src="/static/js/songs/router.js"></script>
 {% endblock head %}
 
 
@@ -44,14 +52,8 @@ USER_ID={{ request.user.id }}
     </script>
 
 
+<div id="content"></div>
 
-<script src="/static/js/lib/underscore.js"></script>
-<script src="/static/js/lib/backbone.js"></script>
-<script src="/static/js/lib/app.js"></script>
-<script src="/static/js/songs/models.js"></script>
-<script src="/static/js/songs/collections.js"></script>
-<script src="/static/js/songs/views.js"></script>
-<script src="/static/js/songs/router.js"></script>
 
 
 {% endblock content %}
