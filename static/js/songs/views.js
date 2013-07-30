@@ -1,4 +1,4 @@
-window.SongListView=Backbone.View.extend({
+Salsasite.SongListView=Backbone.View.extend({
 
     tagName:'div',
 

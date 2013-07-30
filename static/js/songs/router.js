@@ -8,20 +8,12 @@ var AppRouter=Backbone.Router.extend({
 
     list:function(){
 
-        this.songList = new SongCollection();
-        this.songListView= new SongListView({collection:this.songList});
-
+        this.songList = new Salsasite.SongCollection();
+        this.songListView= new Salsasite.SongListView({collection:this.songList});
+         $('#content').html(this.songListView.render().el);
         var self = this;
         
-        this.songList.fetch({
-           
-            success:function(){
-                
-               
-                $('#content').html(self.songListView.render().el);
 
-            },
-        }); 
         },
      
  
@@ -29,5 +21,3 @@ var AppRouter=Backbone.Router.extend({
 
 });
 
-var app = new AppRouter();
-Backbone.history.start();
