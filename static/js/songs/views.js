@@ -3,7 +3,7 @@ Salsasite.SongListView=Backbone.View.extend({
     tagName:'div',
 
     initialize:function(){
-    this.template=_.template($("#tpl-song-list").html())
+    this.template=_.template($("#tpl-song-list").html());
     },
 
 

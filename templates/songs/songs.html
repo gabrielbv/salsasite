@@ -12,24 +12,6 @@
 <script src="/static/js/songs/collections.js"></script>
 <script src="/static/js/songs/views.js"></script>
 <script src="/static/js/songs/router.js"></script>
-<!--
-<script>
-USER_ID={{ request.user.id }}
-
-</script>
--->
-    <script src="/static/js/sm2/soundmanager2.js"></script>
-    <script>
-        soundManager.setup({
-          url: '/static/swf/',
-          // optional: use 100% HTML5 mode where available
-          //preferFlash: false,
-          ontimeout: function() {
-            // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-          }
-
-        });
-    </script>
 
 
 
@@ -42,12 +24,8 @@ USER_ID={{ request.user.id }}
         <div class="span12">
             
 
-            <p> Artist: <%= artist %> </p>
-            <p> Genre: <%= genre %> </p>
-            <p> BPM: <%= bpm %> </p>
-            <p> Status: <%= status %> </p>
-            <p> Price &#36: <%= price %> </p>
-           
+        <%= artist %> 
+
        
         </div>
 
