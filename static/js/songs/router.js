@@ -11,8 +11,7 @@ var AppRouter=Backbone.Router.extend({
         this.songList = new Salsasite.SongCollection();
         this.songListView= new Salsasite.SongListView({collection:this.songList});
          $('#content').html(this.songListView.render().el);
-        var self = this;
-        
+          
 
         },
      
@@ -20,4 +19,6 @@ var AppRouter=Backbone.Router.extend({
 
 
 });
+
+
 
