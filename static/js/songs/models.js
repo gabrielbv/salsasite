@@ -10,6 +10,6 @@ window.Song = Backbone.Model.extend({
         "genre":"",
         "bpm":"",
         "price":""
-    }
+    },
 
 })

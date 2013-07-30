@@ -1,14 +1,14 @@
 {% extends "site_base.html" %}
 
-
+{% block nav_songs %}class="active"{% endblock%}
 
 {% block head %}
-<!-- 
-    <script> 
-        USER_ID={{ request.user.id  }}
+<!--
+<script>
+USER_ID={{ request.user.id }}
 
-    </script>
- -->
+</script>
+-->
     <script src="/static/js/sm2/soundmanager2.js"></script>
     <script>
         soundManager.setup({
@@ -25,53 +25,34 @@
 {% endblock head %}
 
 
-
-
-{% block nav_songs %}class="active"{% endblock%}
-
 {% block content %}
 
-    <script type="text/template" id="tpl-song-list-item">
-        <div class="span4">
-            
-            <a class="btn btn-primary store"><i class="icon-white icon-shopping-cart"> </i> Buy</a> 
-            <a class="btn btn-success play"><i class="icon-white icon-play"></i> Play</a>
-            <a class="btn btn-success pause"><i class="icon-white icon-pause"></i> Pause</a>
+ <script type="text/template" id="tpl-song-list">
+        <div class="span12">
             
 
-        </div><!-- --> 
-
-        <div class="span8">
-            <div class="box">
-                <div class="thumbnail-header color3">
-                    <small><i class="icon-white icon-music"></i> Music<span class="float-right"></span></small>
-                </div><!-- end thumbnail-header --> 
-                <div class="caption music-bg">
-                    <h4><%= title%></h4>
-                    <hr class="hr2">
-                    <dl class="dl">
-                        <p> Artist: <%= artist %> </p>  
-                        <p> Genre: <%= genre %> </p>
-                        <p> BPM: <%= bpm %> </p>
-                        <p> Status: <%= status %> </p>
-                        <p> Price &#36: <%= price %> </p> 
-                       
-                    </dl>         
-                </div>
-                <% if (USER_ID == user.id) { %> <a class="btn btn-success edit"><i class="icon-white icon-edit"></i> Edit</a> <% }  %>
-                  
-
-
-            </div>
+            <p> Artist: <%= artist %> </p>
+            <p> Genre: <%= genre %> </p>
+            <p> BPM: <%= bpm %> </p>
+            <p> Status: <%= status %> </p>
+            <p> Price &#36: <%= price %> </p>
+           
+       
         </div>
 
 
     </script>
 
-<div id='header'></div>
 
 
 <script src="/static/js/lib/underscore.js"></script>
 <script src="/static/js/lib/backbone.js"></script>
 <script src="/static/js/lib/app.js"></script>
+<script src="/static/js/songs/models.js"></script>
+<script src="/static/js/songs/collections.js"></script>
+<script src="/static/js/songs/views.js"></script>
+<script src="/static/js/songs/router.js"></script>
+
+
 {% endblock content %}
+
