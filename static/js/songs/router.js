@@ -17,7 +17,7 @@ Salsasite.AppRouter=Backbone.Router.extend({
  
 
 
-});
+})
 
 
 

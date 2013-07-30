@@ -4,7 +4,7 @@ Salsasite.SongListView=Backbone.View.extend({
 
     initialize:function(){
     this.template=_.template($("#tpl-song-list").html())
-    }
+    },
 
 
     render:function(){
