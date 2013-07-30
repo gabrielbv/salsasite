@@ -21,14 +21,19 @@
 {% block content %}
 <script type="text/template" id="tpl-event-list">
     
-  <div class="span12">
-            
+    <div class ='span4'>
+        <div class ='box'>
 
-      <p> <%= title %> </p>
-
-     
- 
-  </div>
+            <div class='caption'>
+                <h4><%= title %></h4>
+                <h5><%= start_date %></h5>
+                <p><%= body|truncatewords:20  %></p>
+                
+               
+            </div> 
+        </div>
+    </div> 
+        
   
     </script>
 
