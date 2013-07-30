@@ -3,6 +3,15 @@
 {% block nav_songs %}class="active"{% endblock%}
 
 {% block head %}
+
+<script src="/static/js/lib/underscore.js"></script>
+<script src="/static/js/lib/backbone.js"></script>
+<script src="/static/js/songs/app.js"></script>
+<script src="/static/js/songs/setup.js"></script>
+<script src="/static/js/songs/models.js"></script>
+<script src="/static/js/songs/collections.js"></script>
+<script src="/static/js/songs/views.js"></script>
+<script src="/static/js/songs/router.js"></script>
 <!--
 <script>
 USER_ID={{ request.user.id }}
@@ -23,15 +32,7 @@ USER_ID={{ request.user.id }}
     </script>
 
 
-<script src="/static/js/lib/underscore.js"></script>
-<script src="/static/js/lib/backbone.js"></script>
-<script src="/static/js/songs/setup.js"></script>
-<script src="/static/js/songs/app.js"></script>
 
-<script src="/static/js/songs/models.js"></script>
-<script src="/static/js/songs/collections.js"></script>
-<script src="/static/js/songs/views.js"></script>
-<script src="/static/js/songs/router.js"></script>
 {% endblock head %}
 
 
