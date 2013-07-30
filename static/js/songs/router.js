@@ -8,9 +8,8 @@ Salsasite.AppRouter=Backbone.Router.extend({
 
     list:function(){
 
-        this.songList = new Salsasite.SongCollection();
-        this.songListView= new Salsasite.SongListView({collection:this.songList});
-         $('#content').html(this.songListView.render().el);
+        this.songListView= new Salsasite.SongListView({collection:Salsasite.songs})
+        $('#content').html(this.songListView.render().el);
           
 
         },
