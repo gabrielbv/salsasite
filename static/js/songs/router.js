@@ -1,4 +1,4 @@
-var AppRouter=Backbone.Router.extend({
+Salsasite.AppRouter=Backbone.Router.extend({
     routes:{
         '':'list',
     },
