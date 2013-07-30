@@ -1,7 +1,10 @@
 window.SongListView=Backbone.View.extend({
 
     tagName:'div',
-    template:_.template($("#tpl-song-list").html()),
+
+    initialize:function(){
+    this.template=_.template($("#tpl-song-list").html()),
+    }
 
 
     render:function(){
