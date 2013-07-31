@@ -14,6 +14,7 @@ urlpatterns = patterns ('',
     url(r'^(?P<slug>[\w-]+)-(?P<event_id>\d+)/edit/$',views.change,name='edit'),
     url(r'^private/$',views.my_events,name='my_events'),
     url(r'^$',views.backbone,name='backbone'),
+   
 
 
     # url(r'^$',views.generic_list,name='events_list'),

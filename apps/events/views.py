@@ -75,6 +75,7 @@ def change(request, slug=None, event_id=None):
 def backbone(request):
     return render(request,'events/events.html')
 
+
 # @login_required
 # def add_event(request):
 
