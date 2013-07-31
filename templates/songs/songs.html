@@ -12,7 +12,20 @@
 <script src="/static/js/songs/collections.js"></script>
 <script src="/static/js/songs/views.js"></script>
 <script src="/static/js/songs/router.js"></script>
+    
 
+  <script src="/static/js/sm2/soundmanager2.js"></script>
+  <script>
+      soundManager.setup({
+        url: '/static/swf/',
+        // optional: use 100% HTML5 mode where available
+        //preferFlash: false,
+        ontimeout: function() {
+          // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+        }
+
+      });
+  </script>
 
 
 {% endblock head %}
@@ -23,11 +36,27 @@
  <script type="text/template" id="tpl-song-list">
         
 
-        <div class="span4">
+        <div class="span6">
+          <div class="box">
+            
           
-        <%= artist %> 
+            <div class="thumbnail-header color<%if (genre =='salsa') { %>3<% } else if (genre =='bachata') { %>6<% } else { %>8<% } %>">
+                    <small><i class="icon-white icon-music"></i> Music<span class="float-right"></span></small>
+                </div><!-- end thumbnail-header --> 
+          
 
-       
+            <div class="caption music-bg">
+              <h4><%= artist %> - <%= title%></h4>
+              <hr class="hr2">
+              <dl class="dl">
+              <p> Genre: <%= genre %> </p>
+              <p> Price: &#36 <%= price %> </p> 
+              </dl>
+            <a class="btn btn-primary store"><i class="icon-white icon-shopping-cart"> </i> Buy</a> 
+            <a class="btn btn-success play"><i class="icon-white icon-play"></i> Play</a>
+            <a class="btn btn-success pause"><i class="icon-white icon-pause"></i> Pause</a>
+            </div>
+          </div>  
         </div>
 
 

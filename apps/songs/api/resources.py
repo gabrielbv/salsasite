@@ -23,7 +23,7 @@ class SongResource(ModelResource):
     user = fields.ForeignKey(UserResource, 'user', full=True)
 
     class Meta:
-        queryset = Song.objects.filter(status="aproved")
+        queryset = Song.objects.filter(status="aproved").order_by('artist')
         filtering={
         	"genre":ALL,
             "status": ALL,
