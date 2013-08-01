@@ -42,7 +42,21 @@ USER_ID={{ request.user.id }}
 
 
     </script>
+ <script type="text/template" id="tpl-song-details">
+        <div class="span12">
+            
 
+            <p> Artist: <%= artist %> </p>
+            <p> Genre: <%= genre %> </p>
+            <p> BPM: <%= bpm %> </p>
+            <p> Status: <%= status %> </p>
+            <p> Price &#36: <%= price %> </p>
+           
+       
+        </div>
+
+
+    </script>
 
 
 <script src="/static/js/lib/underscore.js"></script>
